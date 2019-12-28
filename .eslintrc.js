@@ -9,6 +9,8 @@ module.exports = {
   extends: ['plugin:vue/strongly-recommended', '@vue/airbnb'],
 
   rules: {
+    'template-curly-spacing' : 'off', 
+    'indent' : "off",
     'import/no-extraneous-dependencies': [
       'error',
       {

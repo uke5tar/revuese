@@ -1,19 +1,24 @@
 import Vue from 'vue';
-import VueRouter from 'vue-router';
+import Router from 'vue-router';
+import { createDynamicRoutes, pathTo, checkAuthAndAbilities } from './helper';
 
-Vue.use(VueRouter);
 
 const routes = [
   {
-    path: '/',
-    name: 'home',
+    path: '*',
+    redirect: pathTo.home,
   },
+  ...createDynamicRoutes(),
 ];
 
-const router = new VueRouter({
+const router = new Router({
   mode: 'history',
-  base: process.env.BASE_URL,
   routes,
 });
+
+router.beforeEach(checkAuthAndAbilities);
+
+
+Vue.use(Router);
 
 export default router;
