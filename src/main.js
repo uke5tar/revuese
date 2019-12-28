@@ -1,5 +1,5 @@
 import Vue from 'vue';
-// import registerGlobalComponents from '@components/global';
+import registerGlobalComponents from '@components/global';
 import './registerServiceWorker';
 import App from './App';
 import plugins from './plugins';
@@ -10,7 +10,7 @@ import(/* webpackPreload: true */ 'typeface-roboto/index.css');
 
 Vue.config.productionTip = false;
 
-// registerGlobalComponents();
+registerGlobalComponents();
 
 let app;
 if (!app) {
