@@ -9,9 +9,9 @@ module.exports = {
   extends: ['plugin:vue/strongly-recommended', '@vue/airbnb'],
 
   rules: {
-    "template-curly-spacing" : "off",
-    "indent": ["error", 2, {
-      "ignoredNodes": ["TemplateLiteral"]
+    'template-curly-spacing': 'off',
+    indent: ['error', 2, {
+      ignoredNodes: ['TemplateLiteral'],
     }],
     'import/no-extraneous-dependencies': [
       'error',
