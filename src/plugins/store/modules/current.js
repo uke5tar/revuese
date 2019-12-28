@@ -1,7 +1,10 @@
 import * as run from '@/plugins/store/helper/storeCreator';
 
 
-const items = [];
+const items = [
+  'snackbar',
+  'loader',
+];
 
 export default {
   namespaced: true,
