@@ -1,6 +1,6 @@
 import Vue from 'vue';
 import Router from 'vue-router';
-import { createDynamicRoutes, pathTo, checkAuthAndAbilities } from './helper';
+import { createDynamicRoutes, pathTo, checkAuth } from './helper';
 
 
 const routes = [
@@ -16,7 +16,7 @@ const router = new Router({
   routes,
 });
 
-router.beforeEach(checkAuthAndAbilities);
+router.beforeEach(checkAuth);
 
 
 Vue.use(Router);

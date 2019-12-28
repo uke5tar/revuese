@@ -21,7 +21,7 @@ export const pathTo = {
 
 export const createDynamicRoutes = () => {
   const pathNames = getAllFiles(require.context('@/pages/', true, /\.(vue)$/i));
-  const pagesRequireNoAuth = [];
+  const pagesRequireNoAuth = [pathTo.login, pathTo.error];
 
   const dynamicRoutes = pathNames.map((pathName) => {
     const route = {
@@ -40,7 +40,7 @@ export const createDynamicRoutes = () => {
 };
 
 
-export const checkAuthAndAbilities = (to, from, next) => {
+export const checkAuth = (to, from, next) => {
   const pathRequiresAuth = to.matched.some((record) => record.meta.requiresAuth);
   // const userIsAuthenticated = store.getters['user/userIsAuthenticated'];
   const userIsAuthenticated = true;
