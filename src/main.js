@@ -1,15 +1,21 @@
 import Vue from 'vue';
-import App from './App';
+import registerGlobalComponents from '@/components/global';
 import './registerServiceWorker';
-import router from './router';
-import store from './store';
-import vuetify from './plugins/vuetify';
+import App from './App';
+import plugins from './plugins';
+
+// eslint-disable-next-line no-unused-expressions
+import(/* webpackPreload: true */ 'typeface-roboto/index.css');
+
 
 Vue.config.productionTip = false;
 
-new Vue({
-  router,
-  store,
-  vuetify,
-  render: h => h(App),
-}).$mount('#app');
+registerGlobalComponents();
+
+let app;
+if (!app) {
+  app = new Vue({
+    ...plugins,
+    render: h => h(App),
+  }).$mount('#app');
+}
