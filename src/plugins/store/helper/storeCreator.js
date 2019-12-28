@@ -1,9 +1,9 @@
-const formatNamingAllCaps = item => item
+const formatNamingAllCaps = (item) => item
   .split(/(?=[A-Z])/)
-  .map(part => part.toUpperCase())
+  .map((part) => part.toUpperCase())
   .join('_');
 
-const formatNamingFirstLetterCap = item => item
+const formatNamingFirstLetterCap = (item) => item
   .charAt(0)
   .toUpperCase() + item.slice(1);
 
@@ -19,7 +19,7 @@ export const createState = (items) => {
 export const createGetters = (items) => {
   const getters = {};
   items.forEach((item) => {
-    getters[item] = state => state[item];
+    getters[item] = (state) => state[item];
   });
   return getters;
 };
