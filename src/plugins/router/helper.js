@@ -42,8 +42,7 @@ export const createDynamicRoutes = () => {
 
 export const checkAuth = (to, from, next) => {
   const pathRequiresAuth = to.matched.some((record) => record.meta.requiresAuth);
-  // const userIsAuthenticated = store.getters['user/userIsAuthenticated'];
-  const userIsAuthenticated = true;
+  const userIsAuthenticated = store.getters['user/userIsAuthenticated'];
 
   if (pathRequiresAuth && !userIsAuthenticated) {
     next({ path: pathTo.login });
