@@ -1,4 +1,4 @@
-# count-my-food
+# vue-blueprint
 
 ## Project setup
 ```

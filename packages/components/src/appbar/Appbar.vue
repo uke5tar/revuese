@@ -17,7 +17,7 @@
             height="50"
             contain
             src="@/assets/img/vue-logo.png" />
-          Count my food
+          vue-blueprint
         </v-toolbar-title>
       </router-link>
 
