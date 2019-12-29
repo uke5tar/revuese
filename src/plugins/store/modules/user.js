@@ -1,9 +1,10 @@
 /* eslint-disable camelcase */
 const initialState = {
   data: {
-    email: null,
+    displayName: 'Joe',
+    email: 'joe@mail.com',
   },
-  isAuthenticated: false,
+  isAuthenticated: true,
 };
 
 export default {

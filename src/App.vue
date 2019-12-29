@@ -1,6 +1,7 @@
 <template>
   <v-app>
     <Appbar />
+    <NavigationDrawer v-if="showNavigationDrawer" />
     <v-content>
       <div style="min-height: 5px">
         <v-progress-linear v-if="loader" indeterminate color="orange" />
@@ -19,6 +20,7 @@
 <script>
 import { mapGetters } from 'vuex';
 import Appbar from '@components/appbar';
+import NavigationDrawer from '@components/navigation_drawer';
 import Snackbar from '@components/snackbar';
 import { pathTo } from '@/plugins/router/helper';
 import apiSettings from '@/mixins/api_service/apiSettings';
@@ -28,11 +30,16 @@ export default {
   name: 'App',
   components: {
     Appbar,
+    NavigationDrawer,
     Snackbar,
   },
   mixins: [apiSettings],
   computed: {
+    ...mapGetters('user', ['userIsAuthenticated']),
     ...mapGetters('current', ['loader']),
+    showNavigationDrawer() {
+      return this.userIsAuthenticated;
+    },
   },
   created() {
     this.interceptFirebaseApiResponse(this);

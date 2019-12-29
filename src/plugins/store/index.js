@@ -3,6 +3,7 @@ import Vuex from 'vuex';
 import createPersistedState from 'vuex-persistedstate';
 import SecureLS from 'secure-ls';
 import current from './modules/current';
+import user from './modules/user';
 
 const ls = new SecureLS({ isCompression: false });
 
@@ -19,5 +20,6 @@ export default new Vuex.Store({
   })],
   modules: {
     current,
+    user,
   },
 });

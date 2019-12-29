@@ -27,7 +27,7 @@
 
       <v-toolbar-items class="align-center">
         <v-btn
-          v-for="item in appbarItems"
+          v-for="item in accountItems"
           :id="item.id"
           :key="item.title"
           icon
@@ -46,14 +46,14 @@
 
 <script>
 import { pathTo } from '@/plugins/router/helper';
-import { appbarItems } from '@/config/navigation/navigationItems';
+import { accountItems } from '@/config/navigation/navigationItems';
 import handleNavigation from '@/mixins/navigation/handleNavigation';
 
 export default {
   name: 'Appbar',
   mixins: [handleNavigation],
   data: () => ({
-    appbarItems,
+    accountItems,
     pathTo,
     pageName: '',
   }),

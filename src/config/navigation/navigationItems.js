@@ -1,7 +1,7 @@
 import { pathTo } from '@/plugins/router/helper';
 
 
-export const appbarItems = [
+export const accountItems = [
   {
     title: 'Account',
     icon: 'account_circle',
@@ -21,7 +21,7 @@ export const appbarItems = [
   },
 ];
 
-export const navigationDrawerItems = [
+export const menuItems = [
   {
     title: 'Home',
     icon: 'home',
