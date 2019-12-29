@@ -17,7 +17,7 @@
             height="50"
             contain
             src="@/assets/img/vue-logo.png" />
-          vue-blueprint
+          re-vue-sable
         </v-toolbar-title>
       </router-link>
 

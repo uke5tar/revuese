@@ -1,4 +1,4 @@
-# vue-blueprint
+# re-vue-sable
 
 ## Project setup
 ```
