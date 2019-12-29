@@ -1,0 +1,21 @@
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background: $background;
+  font-family: $ff_default;
+  font-size: $fs_normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.v-app-bar {
+    .v-toolbar__content {
+      padding-left: 5px;
+    }
+}
+
+.no-link-style {
+    text-decoration: none !important;
+    color: inherit;
+}

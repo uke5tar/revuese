@@ -1,5 +1,6 @@
 <template>
   <v-app>
+    <Appbar />
     <v-content>
       <div style="min-height: 5px">
         <v-progress-linear v-if="loader" indeterminate color="orange" />
@@ -17,6 +18,7 @@
 
 <script>
 import { mapGetters } from 'vuex';
+import Appbar from '@components/appbar';
 import Snackbar from '@components/snackbar';
 import { pathTo } from '@/plugins/router/helper';
 import apiSettings from '@/mixins/api_service/apiSettings';
@@ -25,6 +27,7 @@ import apiSettings from '@/mixins/api_service/apiSettings';
 export default {
   name: 'App',
   components: {
+    Appbar,
     Snackbar,
   },
   mixins: [apiSettings],
@@ -39,7 +42,7 @@ export default {
 </script>
 
 
-<style lang="scss" scoped>
+<style lang="scss">
 .max-1000 {
   max-width: 1000px;
   margin: 0 auto;
