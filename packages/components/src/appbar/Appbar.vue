@@ -47,9 +47,11 @@
 <script>
 import { pathTo } from '@/plugins/router/helper';
 import { appbarItems } from '@/config/navigation/navigationItems';
+import handleNavigation from '@/mixins/navigation/handleNavigation';
 
 export default {
   name: 'Appbar',
+  mixins: [handleNavigation],
   data: () => ({
     appbarItems,
     pathTo,

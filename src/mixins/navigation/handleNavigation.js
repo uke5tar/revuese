@@ -1,5 +1,8 @@
+import { mapActions } from 'vuex';
+
 export default {
   methods: {
+    ...mapActions('user', ['logout']),
     handleNavigation(item) {
       if (item.id === 'logout') {
         return this.logout(this);
