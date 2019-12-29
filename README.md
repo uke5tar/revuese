@@ -1,4 +1,4 @@
-# re-vue-sable
+# revuese
 
 ## Project setup
 ```

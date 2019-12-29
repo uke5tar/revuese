@@ -17,7 +17,7 @@
             height="50"
             contain
             src="@/assets/img/vue-logo.png" />
-          re-vue-sable
+          revuese
         </v-toolbar-title>
       </router-link>
 
