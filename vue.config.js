@@ -1,12 +1,6 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
 const pathTo = require('./filepath.config');
-const environmentVariables = require('./env');
 
-
-process.env = {
-  ...process.env,
-  ...environmentVariables,
-};
 
 module.exports = {
   chainWebpack: (config) => {
