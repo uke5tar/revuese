@@ -1,6 +1,6 @@
 <template>
   <v-app>
-    <Appbar />
+    <Appbar v-if="userIsAuthenticated" />
     <NavigationDrawer v-if="showNavigationDrawer" />
     <v-content>
       <div style="min-height: 5px">

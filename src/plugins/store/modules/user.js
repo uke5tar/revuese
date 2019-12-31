@@ -1,10 +1,13 @@
-/* eslint-disable camelcase */
+import _default from '@/config/defaults';
+
 const initialState = {
   data: {
-    displayName: 'Joe',
-    email: 'joe@mail.com',
+    displayName: null,
+    email: null,
+    uid: null,
+    language: _default.language,
   },
-  isAuthenticated: true,
+  isAuthenticated: false,
 };
 
 export default {
@@ -29,16 +32,26 @@ export default {
       dispatch('setUSER_DATA', userData);
     },
 
-    async logout ({ dispatch }, user) {
-      try {
-        await user.$firebaseApi.logout();
-        dispatch('setUSER_DATA', initialState.user);
+    setUserLanguage ({ dispatch }, language) {
+      dispatch('setUSER_LANGUAGE', language);
+    },
 
-        window.localStorage.removeItem('countMyFood');
-        window.location.reload();
-      } catch (error) {
-        console.error(error);
-      }
+    async login ({ dispatch }, user) {
+      const userData = {
+        name: user.displayName,
+        email: user.email,
+        uid: user.uid,
+        isAuthenticated: true,
+      };
+      dispatch('setUSER_DATA', userData);
+    },
+
+    async logout ({ dispatch }, user) {
+      await user.$firebaseApi.auth().logout();
+      dispatch('setUSER_DATA', initialState.user);
+
+      window.localStorage.removeItem('countMyFood');
+      window.location.reload();
     },
 
     setUSER_DATA ({ commit }, userData) {
@@ -46,6 +59,9 @@ export default {
     },
     setUSER_AUTH ({ commit }, authStatus) {
       commit('setUSER_AUTH', authStatus);
+    },
+    setUSER_LANGUAGE({ commit }, language) {
+      commit('setUSER_LANGUAGE', language);
     },
   },
 
@@ -55,6 +71,9 @@ export default {
     },
     setUSER_AUTH(state, authStatus) {
       state.isAuthenticated = authStatus;
+    },
+    setUSER_LANGUAGE(state, language) {
+      state.data.language = language;
     },
   },
 };

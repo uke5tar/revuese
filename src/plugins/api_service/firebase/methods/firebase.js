@@ -1,4 +1,6 @@
-import * as firebase from 'firebase';
+const firebase = require('firebase/app');
+require('firebase/auth');
+require('firebase/firestore');
 
 
 const firebaseConfig = {
@@ -10,6 +12,7 @@ const firebaseConfig = {
   messagingSenderId: process.env.VUE_APP_FIREBASE_MESSAGING_SENDER_ID,
   appId: process.env.VUE_APP_FIREBASE_APP_ID,
 };
+
 
 firebase.initializeApp(firebaseConfig);
 

@@ -5,7 +5,6 @@ import vuetify from '@/plugins/vuetify';
 import fragment from '@/plugins/fragment';
 import pageTransition from '@/plugins/page_transition';
 import lodash from '@/plugins/lodash';
-import firebase from '@/plugins/firebase';
 
 export default {
   store,
@@ -15,5 +14,4 @@ export default {
   fragment,
   pageTransition,
   lodash,
-  firebase,
 };
