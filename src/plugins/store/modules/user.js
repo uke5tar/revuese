@@ -41,9 +41,10 @@ export default {
         name: user.displayName,
         email: user.email,
         uid: user.uid,
-        isAuthenticated: true,
       };
+
       dispatch('setUSER_DATA', userData);
+      dispatch('setUSER_AUTH', true);
     },
 
     async logout ({ dispatch }, user) {

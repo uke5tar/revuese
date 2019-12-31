@@ -64,7 +64,7 @@ export default {
           if (payload) {
             const { user } = payload;
             await this.login(user).catch((error) => console.error(error));
-            this.$router.push(pathTo.signup);
+            this.$router.push(pathTo.home);
           }
         })
         .catch((error) => {
