@@ -1,8 +1,5 @@
 <template>
   <v-container>
-    <v-snackbar v-model="showError" color="red" top>
-      Login failed. Try again.
-    </v-snackbar>
     <v-layout justify-center>
       <v-flex xs12 sm6>
         <v-toolbar class="cmf_welcome cmf_secondary">
@@ -48,15 +45,13 @@ export default {
   data: () => ({
     email: '',
     password: '',
-    showError: false,
   }),
   methods: {
     async submit() {
-      await this.login(this.email, this.password);
-      this.$router.push(pathTo.home);
-    },
-    clear() {
-      this.password = '';
+      const userCanLogin = await this.login(this.email, this.password);
+      if (userCanLogin) {
+        this.$router.push(pathTo.home);
+      }
     },
   },
 };

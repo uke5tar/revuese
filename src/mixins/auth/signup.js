@@ -6,20 +6,17 @@ export default {
   mixins: [snackbarMethods],
   methods: {
     ...mapActions('user', ['setLogin']),
-    async login(email, password) {
-      const firebaseUser = await this.$firebaseApi
+    async signUp(email, password) {
+      await this.$firebaseApi
         .auth()
-        .signInWithEmailAndPassword(email, password)
-        .then((payload) => payload.user)
+        .createUserWithEmailAndPassword(email, password)
+        .then((firebaserUser) => this.$firebaseApi.addUniqueUserDatabaseByUID.call(this, firebaserUser))
+        .then((firebaserUser) => {
+          this.setLogin(firebaserUser);
+        })
         .catch((error) => {
           this.setSnackbarError({ text: error.message });
         });
-
-      if (firebaseUser) {
-        await this.setLogin(firebaseUser);
-        return true;
-      }
-      return false;
     },
   },
 };
