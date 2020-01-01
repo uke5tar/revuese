@@ -39,34 +39,20 @@
 </template>
 
 <script>
-import { mapActions } from 'vuex';
 import { pathTo } from '@/plugins/router/helper';
-import snackbarMethods from '@/mixins/snackbar';
-
+import login from '@/mixins/auth/login';
 
 export default {
   name: 'LoginForm',
-  mixins: [snackbarMethods],
+  mixins: [login],
   data: () => ({
     email: '',
     password: '',
     showError: false,
   }),
   methods: {
-    ...mapActions('user', ['login']),
     async submit() {
-      const firebaseUser = await this.$firebaseApi
-        .auth()
-        .signInWithEmailAndPassword(this.email, this.password)
-        .then((payload) => payload.user)
-        .catch((error) => {
-          this.email = '';
-          this.password = '';
-          this.setSnackbarError({ text: error.message });
-        });
-
-      await this.login(firebaseUser);
-
+      await this.login(this.email, this.password);
       this.$router.push(pathTo.home);
     },
     clear() {

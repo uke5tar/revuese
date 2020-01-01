@@ -58,7 +58,7 @@ export default {
     };
   },
   methods: {
-    ...mapActions('modules/user', ['login']),
+    ...mapActions('user', ['login']),
     async signUp() {
       try {
         await this.$firebaseApi
