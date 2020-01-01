@@ -36,11 +36,11 @@ export default {
       dispatch('setUSER_LANGUAGE', language);
     },
 
-    async login ({ dispatch }, user) {
+    async login ({ dispatch }, firebaseUser) {
       const userData = {
-        name: user.displayName,
-        email: user.email,
-        uid: user.uid,
+        name: firebaseUser.displayName,
+        email: firebaseUser.email,
+        uid: firebaseUser.uid,
       };
 
       dispatch('setUSER_DATA', userData);
@@ -48,7 +48,7 @@ export default {
     },
 
     async logout ({ dispatch }, user) {
-      await user.$firebaseApi.auth().logout();
+      await user.$firebaseApi.auth().signOut();
       dispatch('setUSER_DATA', initialState.user);
 
       window.localStorage.removeItem('countMyFood');

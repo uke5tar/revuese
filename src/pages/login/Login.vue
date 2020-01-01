@@ -47,31 +47,27 @@ import snackbarMethods from '@/mixins/snackbar';
 export default {
   name: 'LoginForm',
   mixins: [snackbarMethods],
-  data() {
-    return {
-      email: '',
-      password: '',
-      showError: false,
-    };
-  },
+  data: () => ({
+    email: '',
+    password: '',
+    showError: false,
+  }),
   methods: {
     ...mapActions('user', ['login']),
     async submit() {
-      await this.$firebaseApi
+      const firebaseUser = await this.$firebaseApi
         .auth()
         .signInWithEmailAndPassword(this.email, this.password)
-        .then(async (payload) => {
-          if (payload) {
-            const { user } = payload;
-            await this.login(user).catch((error) => console.error(error));
-            this.$router.push(pathTo.home);
-          }
-        })
+        .then((payload) => payload.user)
         .catch((error) => {
           this.email = '';
           this.password = '';
           this.setSnackbarError({ text: error.message });
         });
+
+      await this.login(firebaseUser);
+
+      this.$router.push(pathTo.home);
     },
     clear() {
       this.password = '';
