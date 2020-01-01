@@ -38,7 +38,7 @@ export default {
 
     setLogin ({ dispatch }, user) {
       const userData = {
-        name: user.displayName,
+        displayName: user.displayName,
         email: user.email,
         uid: user.uid,
       };
