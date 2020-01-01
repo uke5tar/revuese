@@ -1,22 +1,29 @@
 import { mapActions } from 'vuex';
+import addUserDatabase from '@/mixins/auth/addUserDatabase';
 import snackbarMethods from '@/mixins/snackbar';
 
-
 export default {
-  mixins: [snackbarMethods],
+  mixins: [addUserDatabase, snackbarMethods],
   methods: {
     ...mapActions('user', ['setLogin']),
-    async signUp(email, password) {
-      await this.$firebaseApi
+    async signUp(userName, email, password) {
+      const firebaseUser = await this.$firebaseApi
         .auth()
         .createUserWithEmailAndPassword(email, password)
-        .then((firebaserUser) => this.$firebaseApi.addUniqueUserDatabaseByUID.call(this, firebaserUser))
-        .then((firebaserUser) => {
-          this.setLogin(firebaserUser);
-        })
+        .then((payload) => payload)
         .catch((error) => {
           this.setSnackbarError({ text: error.message });
         });
+
+      if (firebaseUser) {
+        const { user } = firebaseUser;
+        await user.updateProfile({ displayName: userName });
+        await this.addUserDatabase(user);
+        await this.setLogin(user);
+
+        return true;
+      }
+      return false;
     },
   },
 };

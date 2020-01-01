@@ -7,7 +7,7 @@ export default {
   methods: {
     ...mapActions('user', ['setLogin']),
     async login(email, password) {
-      const firebaseUser = await this.$firebaseApi
+      const user = await this.$firebaseApi
         .auth()
         .signInWithEmailAndPassword(email, password)
         .then((payload) => payload.user)
@@ -15,8 +15,8 @@ export default {
           this.setSnackbarError({ text: error.message });
         });
 
-      if (firebaseUser) {
-        await this.setLogin(firebaseUser);
+      if (user) {
+        await this.setLogin(user);
         return true;
       }
       return false;

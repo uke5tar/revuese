@@ -36,11 +36,11 @@ export default {
       dispatch('setUSER_LANGUAGE', language);
     },
 
-    setLogin ({ dispatch }, firebaseUser) {
+    setLogin ({ dispatch }, user) {
       const userData = {
-        name: firebaseUser.displayName,
-        email: firebaseUser.email,
-        uid: firebaseUser.uid,
+        name: user.displayName,
+        email: user.email,
+        uid: user.uid,
       };
 
       dispatch('setUSER_DATA', userData);

@@ -11,9 +11,9 @@
             <v-layout row wrap>
               <v-flex>
                 <v-text-field
-                  v-model="username"
+                  v-model="userName"
                   type="text"
-                  placeholder="Username"
+                  placeholder="User Name"
                   autofocus
                   @keyup.enter="submit" />
                 <v-text-field
@@ -41,19 +41,23 @@
 </template>
 
 <script>
+import { pathTo } from '@/plugins/router/helper';
 import signUp from '@/mixins/auth/signup';
 
 export default {
   name: 'SignUpForm',
   mixins: [signUp],
   data: () => ({
-    username: '',
+    userName: '',
     email: '',
     password: '',
   }),
   methods: {
     async submit() {
-      this.signUp(this.email, this.password);
+      const userCanSignup = await this.signUp(this.userName, this.email, this.password);
+      if (userCanSignup) {
+        this.$router.push(pathTo.home);
+      }
     },
   },
 };
