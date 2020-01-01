@@ -3,9 +3,7 @@
     <Appbar v-if="userIsAuthenticated" />
     <NavigationDrawer v-if="showNavigationDrawer" />
     <v-content>
-      <div style="min-height: 5px">
-        <v-progress-linear v-if="loader" indeterminate color="orange" />
-      </div>
+      <Loader :show="loader" />
       <v-container fluid>
         <vue-page-transition name="fade-in-down">
           <router-view :class="{'max-1000': $vuetify.breakpoint.lgAndDown}" />
@@ -21,16 +19,17 @@
 import { mapGetters } from 'vuex';
 import Appbar from '@components/appbar';
 import NavigationDrawer from '@components/navigation_drawer';
+import Loader from '@components/loader';
 import Snackbar from '@components/snackbar';
 import { pathTo } from '@/plugins/router/helper';
 import apiSettings from '@/mixins/api_service/apiSettings';
-
 
 export default {
   name: 'App',
   components: {
     Appbar,
     NavigationDrawer,
+    Loader,
     Snackbar,
   },
   mixins: [apiSettings],
