@@ -1,10 +1,3 @@
-/* eslint-disable no-param-reassign */
-
-// extend axios instance default settings
-export const updateApiDefaults = (api, accessToken) => {
-  api.defaults.headers.common.Authorization = `Bearer ${accessToken}`;
-};
-
 // intercept api responses
 export const interceptApiResponse = (api, user) => {
   const snackbarError = (data) => {
