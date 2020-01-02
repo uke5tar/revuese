@@ -9,7 +9,8 @@
             <v-col cols="6">
               <v-text-field
                 class="text-capitalize"
-                dense required autofocus clearable
+                dense required clearable
+                :autofocus="index === 0"
                 :type="key === 'password' && !showPassword ? 'password' : 'text'"
                 :append-icon="key === 'password' ? 'remove_red_eye' : ''"
                 @click:append="showPassword = !showPassword"

@@ -26,8 +26,14 @@
                   type="password"
                   placeholder="Password"
                   @keyup.enter="submit" />
-                <v-btn color="green" dark @click="submit">Sign Up</v-btn>
-                <p class="login-info">
+                <v-btn
+                  width="200"
+                  color="green darken white--text"
+                  outlined
+                  @click="submit">
+                  Sign Up
+                </v-btn>
+                <p class="pt-12">
                   You already have an account? You can
                   <router-link to="/login">log in here</router-link>
                 </p>
@@ -62,9 +68,3 @@ export default {
   },
 };
 </script>
-
-<style lang="scss" scoped>
-.login-info {
-  padding-top: 50px;
-}
-</style>
