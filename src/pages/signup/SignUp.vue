@@ -39,7 +39,7 @@
           </v-btn>
           <p class="pt-12">
             You already have an account? You can
-            <router-link to="/login">log in here</router-link>
+            <router-link :to="pathTo.login">log in here</router-link>
           </p>
         </v-form>
       </v-card-text>
@@ -61,6 +61,7 @@ export default {
       password: '',
     },
     showPassword: false,
+    pathTo,
   }),
   methods: {
     setFieldType(key) {

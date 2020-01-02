@@ -30,16 +30,23 @@
               <span class="subtitle-1 font-weight-bold">Revuese</span>
             </v-col>
           </v-row>
-          <v-btn
-            width="200"
-            color="green darken white--text"
-            outlined
-            @click="submit">
-            Log In
-          </v-btn>
+          <v-row>
+            <v-col cols="3">
+              <v-btn
+                width="200"
+                color="green darken white--text"
+                outlined
+                @click="submit">
+                Log In
+              </v-btn>
+            </v-col>
+            <v-col cols="3" class="d-flex align-end">
+              Forgot password? <router-link :to="pathTo.passwordreset" class="pl-1">Reset here</router-link>
+            </v-col>
+          </v-row>
           <p class="pt-12">
             You don't have an account yet? You can
-            <router-link to="/signup">sign up here</router-link>
+            <router-link :to="pathTo.signup">sign up here</router-link>
           </p>
         </v-form>
       </v-card-text>
@@ -61,6 +68,7 @@ export default {
       password: '',
     },
     showPassword: false,
+    pathTo,
   }),
   methods: {
     setFieldType(key) {
