@@ -10,7 +10,9 @@
               <v-text-field
                 class="text-capitalize"
                 dense required autofocus clearable
-                type="text"
+                :type="key === 'password' && !showPassword ? 'password' : 'text'"
+                :append-icon="key === 'password' ? 'remove_red_eye' : ''"
+                @click:append="showPassword = !showPassword"
                 :label="key"
                 :disabled="!isSelected(index)"
                 v-model="userInformation[key]" />
@@ -40,16 +42,30 @@
         </v-form>
       </v-card-text>
     </v-card>
+    <Modal
+      headline="Reauthenticaten required"
+      save-btn-name="Reauthenticate"
+      :show-modal="showModal"
+      @save="logout"
+      @cancel="showModal = false">
+      {{ reauthenticationMessage }}
+    </Modal>
   </v-container>
 </template>
 
 <script>
 import { mapGetters } from 'vuex';
+import Modal from '@components/modal';
 import snackbarMethods from '@/mixins/snackbar';
+import logout from '@/mixins/auth/logout';
+
 
 export default {
   name: 'Profile',
-  mixins: [snackbarMethods],
+  components: {
+    Modal,
+  },
+  mixins: [logout, snackbarMethods],
   data: () => ({
     userInformation: {
       displayName: '',
@@ -57,6 +73,9 @@ export default {
       password: '',
     },
     selectedId: '',
+    showModal: false,
+    showPassword: false,
+    reauthenticationMessage: '',
   }),
   computed: {
     ...mapGetters('user', ['userData']),
@@ -69,7 +88,45 @@ export default {
       return this.selectedId === index;
     },
     updateUserInformation() {
+      const { currentUser } = this.$firebaseApi.auth();
+      const { userData, userInformation } = this;
 
+      if (userData.displayName !== userInformation.displayName) {
+        currentUser.updateProfile({ displayName: userInformation.displayName })
+          .then(() => {
+            this.setSnackbarSuccess({ text: 'Display name successfully updated' });
+            this.selectedId = '';
+          })
+          .catch((error) => {
+            this.setSnackbarError({ text: error.message });
+          });
+      }
+
+      if (userData.email !== userInformation.email) {
+        currentUser.updateEmail(userInformation.email)
+          .then(() => {
+            this.setSnackbarSuccess({ text: 'Email successfully updated' });
+            this.selectedId = '';
+          })
+          .catch((error) => {
+            if (error.code === 'auth/requires-recent-login') {
+              this.reauthenticationMessage = error.message;
+              this.showModal = true;
+            }
+          });
+      }
+
+      if (userInformation.password !== '') {
+        currentUser
+          .updatePassword(userInformation.password)
+          .then(() => {
+            this.setSnackbarSuccess({ text: 'Email successfully updated' });
+            this.selectedId = '';
+          })
+          .catch((error) => {
+            this.setSnackbarError({ text: error.message });
+          });
+      }
     },
     async getUserInformation() {
       const user = this.userData;
