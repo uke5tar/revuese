@@ -50,10 +50,11 @@
 <script>
 import { pathTo } from '@/plugins/router/helper';
 import login from '@/mixins/auth/login';
+import snackbarMethods from '@/mixins/snackbar';
 
 export default {
   name: 'LoginForm',
-  mixins: [login],
+  mixins: [login, snackbarMethods],
   data: () => ({
     loginData: {
       email: '',
@@ -62,11 +63,22 @@ export default {
     showPassword: false,
   }),
   methods: {
+    setFieldType(key) {
+      const validInputTypes = ['text', 'email', 'password'];
+      let type = validInputTypes.includes(key) ? key : 'text';
+      if (this.showPassword) type = 'text';
+      return type;
+    },
     async submit() {
-      const userCanLogin = await this.login(this.loginData.email, this.loginData.password);
-      if (userCanLogin) {
-        this.$router.push(pathTo.home);
-      }
+      await this.login(...Object.values(this.loginData))
+        .then((success) => {
+          if (success) {
+            this.$router.push(pathTo.home);
+          }
+        })
+        .catch((error) => {
+          this.setSnackbarError({ text: error.message });
+        });
     },
   },
 };
