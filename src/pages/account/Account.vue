@@ -1,13 +1,16 @@
 <template>
   <v-container>
-    <v-card>
-      <v-card-title center>Account</v-card-title>
-    </v-card>
+    <Profile />
   </v-container>
 </template>
 
 <script>
+import Profile from '@components/profile';
+
 export default {
   name: 'Account',
+  components: {
+    Profile,
+  },
 };
 </script>
