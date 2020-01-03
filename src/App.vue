@@ -38,9 +38,6 @@ export default {
       return this.userIsAuthenticated;
     },
   },
-  created() {
-    console.log(this.$firebase);
-  },
 };
 </script>
 
