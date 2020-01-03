@@ -2,7 +2,7 @@ import Vue from 'vue';
 import Vuex from 'vuex';
 import createPersistedState from 'vuex-persistedstate';
 import SecureLS from 'secure-ls';
-import vuexfire from '@/plugins/vuexfire';
+import { vuexfireMutations } from 'vuexfire';
 import current from './modules/current';
 import user from './modules/user';
 
@@ -24,6 +24,6 @@ export default new Vuex.Store({
     user,
   },
   mutations: {
-    ...vuexfire,
+    ...vuexfireMutations,
   },
 });

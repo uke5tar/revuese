@@ -5,7 +5,7 @@
       <v-card-subtitle>Update user information</v-card-subtitle>
       <v-card-text>
         <v-form class="pb-12">
-          <v-row v-for="(value, key, index) in userInformation" :key="index">
+          <v-row v-for="(value, key, index) in localUserData" :key="index">
             <v-col cols="6">
               <v-text-field
                 class="text-capitalize"
@@ -16,7 +16,7 @@
                 @click:append="showPassword = !showPassword"
                 :label="key"
                 :disabled="!isSelected(index)"
-                v-model="userInformation[key]" />
+                v-model="localUserData[key]" />
             </v-col>
             <v-col cols="3">
               <v-btn
@@ -35,7 +35,7 @@
                 width="200"
                 color="green darken white--text"
                 outlined
-                @click="updateUserInformation">
+                @click="updateLocalUserData">
                 Save
               </v-btn>
             </v-col>
@@ -55,7 +55,7 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex';
+import { mapGetters, mapActions } from 'vuex';
 import Modal from '@components/modal';
 import snackbarMethods from '@/mixins/snackbar';
 import logout from '@/mixins/auth/logout';
@@ -68,7 +68,7 @@ export default {
   },
   mixins: [logout, snackbarMethods],
   data: () => ({
-    userInformation: {
+    localUserData: {
       displayName: '',
       email: '',
       password: '',
@@ -82,32 +82,39 @@ export default {
     ...mapGetters('user', ['userData']),
   },
   methods: {
+    ...mapActions('user', ['setUserData']),
     toggleEdit(index) {
       this.selectedId = this.selectedId !== index ? index : '';
     },
     isSelected(index) {
       return this.selectedId === index;
     },
-    updateUserInformation() {
+    updateLocalUserData() {
       const { currentUser } = this.$fireauth;
-      const { userData, userInformation } = this;
+      const { userData, localUserData } = this;
 
-      if (userData.displayName !== userInformation.displayName) {
-        currentUser.updateProfile({ displayName: userInformation.displayName })
+      if (userData.displayName !== localUserData.displayName) {
+        currentUser.updateProfile({ displayName: localUserData.displayName })
           .then(() => {
-            this.setSnackbarSuccess({ text: 'Display name successfully updated' });
+            this.setUserData({
+              displayName: localUserData.displayName,
+            });
             this.selectedId = '';
+            this.setSnackbarSuccess({ text: 'Display name successfully updated' });
           })
           .catch((error) => {
             this.setSnackbarError({ text: error.message });
           });
       }
 
-      if (userData.email !== userInformation.email) {
-        currentUser.updateEmail(userInformation.email)
+      if (userData.email !== localUserData.email) {
+        currentUser.updateEmail(localUserData.email)
           .then(() => {
-            this.setSnackbarSuccess({ text: 'Email successfully updated' });
+            this.setUserData({
+              email: localUserData.email,
+            });
             this.selectedId = '';
+            this.setSnackbarSuccess({ text: 'Email successfully updated' });
           })
           .catch((error) => {
             if (error.code === 'auth/requires-recent-login') {
@@ -117,9 +124,9 @@ export default {
           });
       }
 
-      if (userInformation.password !== '') {
+      if (localUserData.password !== '') {
         currentUser
-          .updatePassword(userInformation.password)
+          .updatePassword(localUserData.password)
           .then(() => {
             this.setSnackbarSuccess({ text: 'Email successfully updated' });
             this.selectedId = '';
@@ -129,7 +136,7 @@ export default {
           });
       }
     },
-    async getUserInformation() {
+    async getLocalUserData() {
       const user = this.userData;
       const hasUserTable = await this.$firestore.collection('users').doc(user.uid).get()
         .then((doc) => doc.exists)
@@ -139,14 +146,14 @@ export default {
 
       if (hasUserTable) {
         Object.keys(user).forEach((key, value) => {
-          const hasKeys = [this.userInformation, user].every((item) => Object.prototype.hasOwnProperty.call(item, key));
-          if (hasKeys) this.userInformation[key] = user[key];
+          const hasKeys = [this.localUserData, user].every((item) => Object.prototype.hasOwnProperty.call(item, key));
+          if (hasKeys) this.localUserData[key] = user[key];
         });
       }
     },
   },
   created() {
-    this.getUserInformation();
+    this.getLocalUserData();
   },
 };
 </script>

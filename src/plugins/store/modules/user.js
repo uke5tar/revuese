@@ -26,9 +26,7 @@ export default {
   },
 
   actions: {
-    setUserData ({ dispatch }, data) {
-      const { userData } = data;
-
+    setUserData ({ dispatch }, userData) {
       dispatch('setUSER_DATA', userData);
     },
 
