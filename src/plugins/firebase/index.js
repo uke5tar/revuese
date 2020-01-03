@@ -1,11 +1,9 @@
 /* eslint-disable no-shadow */
 import Vue from 'vue';
+import firebase from 'firebase/app';
+import 'firebase/firestore';
+import 'firebase/auth';
 import firebaseConfig from './config';
-
-const firebase = require('firebase/app');
-require('firebase/auth');
-require('firebase/firestore');
-
 
 firebase.initializeApp(firebaseConfig);
 
