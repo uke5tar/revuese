@@ -58,14 +58,14 @@ import { mapGetters, mapActions } from 'vuex';
 import Modal from '@components/modal';
 import snackbarMethods from '@/mixins/snackbar';
 import logout from '@/mixins/auth/logout';
-
+import loaderMethods from '@/mixins/loader';
 
 export default {
   name: 'Profile',
   components: {
     Modal,
   },
-  mixins: [logout, snackbarMethods],
+  mixins: [logout, loaderMethods, snackbarMethods],
   data: () => ({
     localUserData: {
       displayName: '',
@@ -136,12 +136,16 @@ export default {
       }
     },
     async getLocalUserData() {
+      this.showLoader();
+
       const user = this.userData;
       const hasUserTable = await this.$firestore.collection('users').doc(user.uid).get()
         .then((doc) => doc.exists)
         .catch((error) => {
           this.setSnackbarError({ text: error.message });
         });
+
+      this.hideLoader();
 
       if (hasUserTable) {
         Object.keys(user).forEach((key, value) => {

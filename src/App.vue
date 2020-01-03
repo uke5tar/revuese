@@ -1,7 +1,7 @@
 <template>
   <v-app>
     <Appbar v-if="userIsAuthenticated" />
-    <NavigationDrawer v-if="showNavigationDrawer" />
+    <NavigationDrawer v-if="userIsAuthenticated" />
     <v-content>
       <Loader :show="loader" />
       <v-container fluid>
@@ -34,9 +34,6 @@ export default {
   computed: {
     ...mapGetters('user', ['userIsAuthenticated']),
     ...mapGetters('current', ['loader']),
-    showNavigationDrawer() {
-      return this.userIsAuthenticated;
-    },
   },
 };
 </script>
