@@ -2,7 +2,6 @@
   <v-container>
     <v-card>
       <v-card-title>Profile</v-card-title>
-      <v-card-subtitle>Update user information</v-card-subtitle>
       <v-card-text>
         <v-form class="pb-12">
           <v-row v-for="(value, key, index) in localUserData" :key="index">
