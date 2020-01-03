@@ -7,12 +7,9 @@ export default {
   methods: {
     ...mapActions('user', ['setLogout']),
     async logout() {
-      await this.$firebase
-        .auth()
-        .signOut()
-        .catch((error) => {
-          this.setSnackbarError({ text: error.message });
-        });
+      await this.$fireauth.signOut().catch((error) => {
+        this.setSnackbarError({ text: error.message });
+      });
 
       this.setLogout();
     },
