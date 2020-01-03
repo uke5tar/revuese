@@ -7,7 +7,7 @@ export default {
   methods: {
     ...mapActions('user', ['setLogin']),
     async login(email, password) {
-      const user = await this.$firebaseApi
+      const user = await this.$firebase
         .auth()
         .signInWithEmailAndPassword(email, password)
         .then((payload) => payload.user)

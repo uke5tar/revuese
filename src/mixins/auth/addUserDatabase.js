@@ -4,8 +4,7 @@ export default {
       const { uid } = user;
       const { displayName } = user;
 
-      this.$firebaseApi
-        .firestore()
+      this.$firestore
         .collection('users')
         .doc(uid)
         .set({

@@ -7,8 +7,7 @@ export default {
   methods: {
     ...mapActions('user', ['setLogin']),
     async signUp(userName, email, password) {
-      const firebaseUser = await this.$firebaseApi
-        .auth()
+      const firebaseUser = await this.$fireauth
         .createUserWithEmailAndPassword(email, password)
         .then((payload) => payload)
         .catch((error) => {

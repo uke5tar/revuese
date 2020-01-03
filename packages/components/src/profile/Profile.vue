@@ -89,7 +89,7 @@ export default {
       return this.selectedId === index;
     },
     updateUserInformation() {
-      const { currentUser } = this.$firebaseApi.auth();
+      const { currentUser } = this.$fireauth;
       const { userData, userInformation } = this;
 
       if (userData.displayName !== userInformation.displayName) {
@@ -133,7 +133,7 @@ export default {
       const user = this.userData;
       const { uid } = user;
 
-      const hasUserTable = await this.$firebaseApi.firestore().collection('users').doc(uid).get()
+      const hasUserTable = await this.$firestore.collection('users').doc(uid).get()
         .then((doc) => doc.exists)
         .catch((error) => {
           this.setSnackbarError({ text: error.message });

@@ -7,7 +7,7 @@ export default {
   methods: {
     ...mapActions('user', ['setLogout']),
     async logout() {
-      await this.$firebaseApi
+      await this.$firebase
         .auth()
         .signOut()
         .catch((error) => {

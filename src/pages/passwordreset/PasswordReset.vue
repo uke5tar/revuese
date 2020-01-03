@@ -54,7 +54,7 @@ export default {
   }),
   methods: {
     passwordReset() {
-      this.$firebaseApi.auth().sendPasswordResetEmail(this.email)
+      this.$fireauth.sendPasswordResetEmail(this.email)
         .then(() => {
           this.setSnackbarSuccess({ text: 'Password reset email send' });
           this.$router.push(pathTo.login);

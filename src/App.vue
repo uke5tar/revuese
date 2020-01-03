@@ -22,7 +22,6 @@ import NavigationDrawer from '@components/navigation_drawer';
 import Loader from '@components/loader';
 import Snackbar from '@components/snackbar';
 import { pathTo } from '@/plugins/router/helper';
-import apiSettings from '@/mixins/api_service/apiSettings';
 
 export default {
   name: 'App',
@@ -32,7 +31,6 @@ export default {
     Loader,
     Snackbar,
   },
-  mixins: [apiSettings],
   computed: {
     ...mapGetters('user', ['userIsAuthenticated']),
     ...mapGetters('current', ['loader']),
@@ -41,8 +39,7 @@ export default {
     },
   },
   created() {
-    this.interceptFirebaseApiResponse(this);
-    // this.showLoaderOnFirebaseApiFetch(this);
+    console.log(this.$firebase);
   },
 };
 </script>
