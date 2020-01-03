@@ -131,13 +131,12 @@ export default {
     },
     async getUserInformation() {
       const user = this.userData;
-      const { uid } = user;
-
-      const hasUserTable = await this.$firestore.collection('users').doc(uid).get()
+      const hasUserTable = await this.$firestore.collection('users').doc(user.uid).get()
         .then((doc) => doc.exists)
         .catch((error) => {
           this.setSnackbarError({ text: error.message });
         });
+
       if (hasUserTable) {
         Object.keys(user).forEach((key, value) => {
           const hasKeys = [this.userInformation, user].every((item) => Object.prototype.hasOwnProperty.call(item, key));
