@@ -145,14 +145,14 @@ export default {
           this.setSnackbarError({ text: error.message });
         });
 
-      this.hideLoader();
-
       if (hasUserTable) {
         Object.keys(user).forEach((key, value) => {
           const hasKeys = [this.localUserData, user].every((item) => Object.prototype.hasOwnProperty.call(item, key));
           if (hasKeys) this.localUserData[key] = user[key];
         });
       }
+
+      this.hideLoader();
     },
   },
   created() {
