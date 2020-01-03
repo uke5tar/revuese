@@ -53,12 +53,12 @@ export const checkAuth = (to, from, next) => {
   ];
 
   const pathRequiresAuth = to.matched.some((record) => record.meta.requiresAuth);
-  const shouldRedirect = to.matched.some((record) => redirectIfAuthenticated.includes(record.path));
+  const shouldRedirectIfAuthenticated = to.matched.some((record) => redirectIfAuthenticated.includes(record.path));
   const userIsAuthenticated = store.getters['user/userIsAuthenticated'];
 
   if (pathRequiresAuth && !userIsAuthenticated) {
     next({ path: pathTo.login });
-  } else if (userIsAuthenticated && shouldRedirect) {
+  } else if (userIsAuthenticated && shouldRedirectIfAuthenticated) {
     next({ path: pathTo.home });
   } else {
     next();
