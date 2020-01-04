@@ -1,18 +1,29 @@
 # revuese
-Boilerplate for projects using vue, vuex and firebase. This project was created via Vue CLI including PWA setup.
+Starterkit for projects using Vue, Vuex, Vuetify, Firebase Authentication and Firestore database.
+
+## Why
+Most apps require some sort of authentication and a database to store values. The basic architecture for this is usually quite similar. We have login, logout, signup and password-reset pages/ logic. We have a profile component to change the user information. We have a user's database and need to set it up/ communicate with it. We have routing that redirects if a page is accessed that requires authentication and the user is not authenticated or redirects if pages like the login page are requested after the user is already authenticated.
+Usually we also have vuex, persistent state (state persist after reload) and want that state to be saved encrypted locally to not give away sensitive information.
+Additionally we mostly have some sort of navigation panel (appbar, navigation drawer), modals, a loader while data is fetched, a snackbar to show errors, success messages and other reusable standard components. To not reinvent the wheel all components are based on vuetify.
+Furthermore we often have eslinting rules, some babel tweaks (e.g. optional chaining and nullish-coalescing-operator), we want our scss to be transformed to css and maybe set some aliases in Webpack.
+Creating this repetitive architecture takes usually a few days before we are ready to carve our actual idea out of code.
+This is what this starterkit is for to save you time and let you jump into developing your actual application straight away.
 
 Special features:
-- Each folder within pages will be automagically turned into a route (see src/plugins/router/helper.js) 
-- 'Current' Module in vuex creates state, getters, actions and mutations automagically. Use it only for simple state functions that don't need calculations but simply store and retrieve data (see src/plugins/store/helper/storeCreator.js) 
-- Firebase integration (create .env.local with your api credentials) with individual methods on prototype for $firebase, $fireauth, $firestore
-- Login, logout, signup and password-reset methods abstracted into mixins for firebase
-- vuefire and vuexfire setup for keeping data in sync
-- forceRerender mixin that updates the clean way in vue via updating a key
+- Dynamic routing
+-- Each folder within src/pages will be automagically turned into a route (see src/plugins/router/helper.js) 
+- Dynamic store
+-- The store comes with two pre-build Modules. 'User' and Current'. The latter one is special because state, getters, actions and mutations are automagically created by simply adding the name for it into a predefined array thus avoiding to write unnecessary boilerplate code. It works only for simple state values that don't specific specific calculations (see src/plugins/store/helper/storeCreator.js) 
+- Firebase Authentication
+-- Firebase Authentication (.env.local with api credentials needed) with individual methods on prototype ($firebase, $fireauth and $firestore)
+-- Comes with login, logout, signup and password-reset pages and the built-in logic needed for that to authenticate.
+- Automatic creation of an user database in firestore after signup
+-- Vuefire and Vuexfire setup for keeping data in sync
 
 Other features:
 - Vuetify component library with robo-font and material design icon library locally installed via npm 
 - Opiniated eslint configuration with airbnb config (without prettier)
-- Automatic creation of an user database in firestore after signup
+- ForceRerender mixin that updates the clean way in Vue via updating a key of the desired component
 - Page transitions via docs: https://www.npmjs.com/package/vue-page-transition
 - Vue fragments via docs: https://www.npmjs.com/package/vue-fragment
 
@@ -28,7 +39,7 @@ Pages (prebuilt):
 - Login, Signup, Passwordreset, Home, Account, Settings, Error
 
 SCSS:
-- SCSS support preconfigured via sass-ressource-loader in vue.config.js
+- SCSS support pre-configured via sass-ressource-loader in vue.config.js
 
 Config:
 - Dedicated config files in root
