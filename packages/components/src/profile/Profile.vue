@@ -110,7 +110,6 @@ export default {
         currentUser.updateEmail(localUserData.email)
           .then(() => {
             this.setUserData({ email: localUserData.email });
-            this.updateUserDatabase({ email: localUserData.email });
             this.selectedId = '';
             this.setSnackbarSuccess({ text: 'Email successfully updated' });
           })

@@ -4,7 +4,7 @@ import updateDatabase from '../methods/updateDatabase';
 export default {
   mixins: [updateDatabase],
   computed: {
-    ...mapGetters('user', 'userData'),
+    ...mapGetters('user', ['userData']),
   },
   methods: {
     updateUserDatabase(data) {

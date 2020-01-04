@@ -6,7 +6,7 @@ export default {
   mixins: [addUserDatabase, snackbarMethods],
   methods: {
     ...mapActions('user', ['setLogin']),
-    async signUp(userName, email, password) {
+    async signUp(displayName, email, password) {
       const firebaseUser = await this.$fireauth
         .createUserWithEmailAndPassword(email, password)
         .then((payload) => payload)
@@ -16,8 +16,8 @@ export default {
 
       if (firebaseUser) {
         const { user } = firebaseUser;
-        await user.updateProfile({ displayName: userName });
-        await this.addUserDatabase({ userName: user.displayName });
+        await user.updateProfile({ displayName });
+        await this.addUserDatabase({ displayName: user.displayName });
         await this.setLogin(user);
 
         return true;

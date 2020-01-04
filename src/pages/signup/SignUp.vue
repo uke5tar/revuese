@@ -56,7 +56,7 @@ export default {
   mixins: [signUp],
   data: () => ({
     signupData: {
-      userName: '',
+      displayName: '',
       email: '',
       password: '',
     },
