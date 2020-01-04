@@ -51,12 +51,32 @@ Babel:
 Packages/ Tools:
 - Vuex
 - Vuex persistant state (persist after reload)
+- Vuetify
+- Vuefire, Vuexfire
 - Secure-ls to encrypt local vuex state
 - Webpack
 - Babel
 - Jest (unit)
 - Cypress (E2E)
 - Husky (Git hooks)
+
+## How to get stareted
+1. git clone https://github.com/uke5tar/revuese.git
+2. cd into revuese
+3. Run npm install
+5. Create .evn.local file in root directory 
+6. Setup Firebase account: https://firebase.google.com/
+7. Go to console and create new project
+8. Copy ApiKey, AuthDomain and ProjectId into .env.local file with the following syntax:
+```
+VUE_APP_FIREBASE_API_KEY=exampleKey
+VUE_APP_FIREBASE_AUTH_DOMAIN=exampleAuthDomain
+VUE_APP_FIREBASE_PROJECT_ID=exampleProjectId
+```
+9. Run npm start
+10. Go to localhost:8080
+11. Click on Signup here and register
+12. A new users database has been created for you (check in Firebase Admin Panel in the section 'Databases')
 
 
 ## Project setup
