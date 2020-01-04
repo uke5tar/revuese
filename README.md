@@ -69,9 +69,9 @@ Packages/ Tools:
 7. Go to console and create new project
 8. Copy ApiKey, AuthDomain and ProjectId into .env.local file with the following syntax:
 ```
-VUE_APP_FIREBASE_API_KEY=exampleKey
-VUE_APP_FIREBASE_AUTH_DOMAIN=exampleAuthDomain
-VUE_APP_FIREBASE_PROJECT_ID=exampleProjectId
+VUE_APP_FIREBASE_API_KEY=%%API_KEY%%
+VUE_APP_FIREBASE_AUTH_DOMAIN=%%AUTH_DOMAIN%%
+VUE_APP_FIREBASE_PROJECT_ID=%%PROJECT_ID%%
 ```
 9. Run npm start
 10. Go to localhost:8080
