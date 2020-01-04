@@ -1,6 +1,9 @@
 # revuese
 Starterkit for Projects with Vue, Vuex, Vuetify and Firebase Authentication + Firestore DB.
 
+###### @author: uke5tar
+###### @date: 2020-04-01
+
 ## Why
 Most apps require some sort of authentication and a database to store values. The basic architecture for this is usually quite similar. We have login, logout, signup and password-reset pages/ logic. We have a profile component to change the user information. We have a user's database and need to set it up/ communicate with it. We have routing that redirects if a page is accessed that requires authentication and the user is not authenticated or redirects if pages like the login page are requested after the user is already authenticated.
 Usually we also have vuex, persistent state (state persist after reload) and want that state to be saved encrypted locally to not give away sensitive information.
