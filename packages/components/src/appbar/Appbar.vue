@@ -17,7 +17,7 @@
             height="50"
             contain
             src="@/assets/img/vue-logo.png" />
-          revuese
+          <span v-show="$vuetify.breakpoint.smAndUp">revuese</span>
         </v-toolbar-title>
       </router-link>
 
@@ -25,7 +25,7 @@
       <Title type="h1" class="font-weight-light text-capitalize">{{ pageName }}</Title>
       <v-spacer />
 
-      <v-toolbar-items class="align-center">
+      <v-toolbar-items class="align-center" v-if="$vuetify.breakpoint.smAndUp">
         <v-btn
           v-for="item in accountItems"
           :id="item.id"
@@ -39,6 +39,29 @@
           </v-icon>
         </v-btn>
       </v-toolbar-items>
+
+      <v-menu v-else bottom offset-y>
+        <template v-slot:activator="{ on }">
+          <v-btn dark icon v-on="on">
+            <v-icon>more_vert</v-icon>
+          </v-btn>
+        </template>
+        <v-list>
+          <v-list-item
+            v-for="item in accountItems"
+            :id="item.id"
+            :key="item.title"
+            @click="handleNavigation(item)"
+            data-cy="appbar_nav-item">
+            <v-list-item-title>
+              {{ item.title }}
+            </v-list-item-title>
+            <v-list-item-icon>
+              <v-icon>{{ item.icon }}</v-icon>
+            </v-list-item-icon>
+          </v-list-item>
+        </v-list>
+      </v-menu>
     </v-app-bar>
     <slot />
   </nav>
