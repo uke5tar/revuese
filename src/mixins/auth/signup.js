@@ -1,5 +1,5 @@
 import { mapActions } from 'vuex';
-import addUserDatabase from '@/mixins/auth/addUserDatabase';
+import addUserDatabase from '@/mixins/firestore/users/addUserDatabase';
 import snackbarMethods from '@/mixins/snackbar';
 
 export default {
@@ -17,7 +17,7 @@ export default {
       if (firebaseUser) {
         const { user } = firebaseUser;
         await user.updateProfile({ displayName: userName });
-        await this.addUserDatabase(user);
+        await this.addUserDatabase({ userName: user.displayName });
         await this.setLogin(user);
 
         return true;

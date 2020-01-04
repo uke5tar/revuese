@@ -59,13 +59,14 @@ import Modal from '@components/modal';
 import snackbarMethods from '@/mixins/snackbar';
 import logout from '@/mixins/auth/logout';
 import loaderMethods from '@/mixins/loader';
+import updateUserDatabase from '@/mixins/firestore/users/updateUserDatabase';
 
 export default {
   name: 'Profile',
   components: {
     Modal,
   },
-  mixins: [logout, loaderMethods, snackbarMethods],
+  mixins: [logout, loaderMethods, updateUserDatabase, snackbarMethods],
   data: () => ({
     localUserData: {
       displayName: '',
@@ -95,9 +96,8 @@ export default {
       if (userData.displayName !== localUserData.displayName) {
         currentUser.updateProfile({ displayName: localUserData.displayName })
           .then(() => {
-            this.setUserData({
-              displayName: localUserData.displayName,
-            });
+            this.setUserData({ displayName: localUserData.displayName });
+            this.updateUserDatabase({ displayName: localUserData.displayName });
             this.selectedId = '';
             this.setSnackbarSuccess({ text: 'Display name successfully updated' });
           })
@@ -109,9 +109,8 @@ export default {
       if (userData.email !== localUserData.email) {
         currentUser.updateEmail(localUserData.email)
           .then(() => {
-            this.setUserData({
-              email: localUserData.email,
-            });
+            this.setUserData({ email: localUserData.email });
+            this.updateUserDatabase({ email: localUserData.email });
             this.selectedId = '';
             this.setSnackbarSuccess({ text: 'Email successfully updated' });
           })
