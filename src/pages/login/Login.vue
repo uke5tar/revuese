@@ -1,56 +1,57 @@
 <template>
   <v-container>
-    <v-card>
-      <v-card-title>Login</v-card-title>
-      <v-card-text>
-        <v-form>
-          <v-row>
-            <v-col cols="6">
-              <v-row v-for="(value, key, index) in loginData" :key="index">
-                <v-col>
-                  <v-text-field
-                    class="text-capitalize"
-                    dense required clearable
-                    :autofocus="index === 0"
-                    :type="key === 'password' && !showPassword ? 'password' : 'text'"
-                    :append-icon="key === 'password' ? 'remove_red_eye' : ''"
-                    @click:append="showPassword = !showPassword"
-                    :label="key"
-                    v-model="loginData[key]"
-                    @keyup.enter="submit" />
-                </v-col>
-              </v-row>
-            </v-col>
-            <v-col cols="6" align="center">
-              <v-img
-                class="fill-height"
-                height="125"
-                contain
-                src="@/assets/img/vue-logo.png" />
-              <span class="subtitle-1 font-weight-bold">Revuese</span>
-            </v-col>
-          </v-row>
-          <v-row>
-            <v-col cols="3">
-              <v-btn
-                width="200"
-                color="green darken white--text"
-                outlined
-                @click="submit">
-                Log In
-              </v-btn>
-            </v-col>
-            <v-col cols="3" class="d-flex align-end">
-              Forgot password? <router-link :to="pathTo.passwordreset" class="pl-1">Reset here</router-link>
-            </v-col>
-          </v-row>
-          <p class="pt-12">
-            You don't have an account yet? You can
-            <router-link :to="pathTo.signup">sign up here</router-link>
-          </p>
-        </v-form>
-      </v-card-text>
-    </v-card>
+    <v-row justify="center">
+      <v-card max-width="600">
+        <v-card-title>
+          Login
+          <span class="font-weight-light pl-2">
+            | Revuese
+          </span>
+        </v-card-title>
+        <v-card-text>
+          <v-form>
+            <v-row>
+              <v-col>
+                <v-row v-for="(value, key, index) in loginData" :key="index">
+                  <v-col>
+                    <v-text-field
+                      class="text-capitalize"
+                      dense required clearable
+                      :autofocus="index === 0"
+                      :type="key === 'password' && !showPassword ? 'password' : 'text'"
+                      :append-icon="key === 'password' ? 'remove_red_eye' : ''"
+                      @click:append="showPassword = !showPassword"
+                      :label="key"
+                      v-model="loginData[key]"
+                      @keyup.enter="submit" />
+                  </v-col>
+                </v-row>
+              </v-col>
+            </v-row>
+            <v-row>
+              <v-col cols="12" md="6">
+                <v-btn
+                  width="200"
+                  color="green darken white--text"
+                  outlined
+                  @click="submit">
+                  Log In
+                </v-btn>
+              </v-col>
+              <v-col cols="12" md="6" class="pt-6 pt-sm-0 d-flex align-end">
+                Forgot password? <router-link :to="pathTo.passwordreset" class="pl-1">Reset here</router-link>
+              </v-col>
+            </v-row>
+            <v-row class="pt-0 pt-sm-6">
+              <v-col>
+                You don't have an account yet?
+                <router-link :to="pathTo.signup">sign up here</router-link>
+              </v-col>
+            </v-row>
+          </v-form>
+        </v-card-text>
+      </v-card>
+    </v-row>
   </v-container>
 </template>
 
