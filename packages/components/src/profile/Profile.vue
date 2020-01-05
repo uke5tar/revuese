@@ -5,7 +5,7 @@
       <v-card-text>
         <v-form class="pb-12">
           <v-row v-for="(value, key, index) in localUserData" :key="index">
-            <v-col cols="6">
+            <v-col cols="12" md="6">
               <v-text-field
                 class="text-capitalize"
                 dense required clearable
@@ -17,26 +17,30 @@
                 :disabled="!isSelected(index)"
                 v-model="localUserData[key]" />
             </v-col>
-            <v-col cols="3">
-              <v-btn
-                width="200"
-                outlined
-                :color="!isSelected(index) ? 'orange darken white--text' : 'red darken white--text'"
-                @click="toggleEdit(index)">
-                <v-icon left>
-                  {{ !isSelected(index) ? 'edit' : 'clear' }}
-                </v-icon>
-                {{ !isSelected(index) ? 'Edit' : 'Cancel' }}
-              </v-btn>
-            </v-col>
-            <v-col cols="3">
-              <v-btn
-                width="200"
-                color="green darken white--text"
-                outlined
-                @click="updateLocalUserData">
-                Save
-              </v-btn>
+            <v-col cols="12" md="6">
+              <v-row>
+                <v-col cols="12" sm="6">
+                  <v-btn
+                    width="200"
+                    outlined
+                    :color="!isSelected(index) ? 'orange darken white--text' : 'red darken white--text'"
+                    @click="toggleEdit(index)">
+                    <v-icon left>
+                      {{ !isSelected(index) ? 'edit' : 'clear' }}
+                    </v-icon>
+                    {{ !isSelected(index) ? 'Edit' : 'Cancel' }}
+                  </v-btn>
+                </v-col>
+                <v-col cols="12" sm="6">
+                  <v-btn
+                    width="200"
+                    color="green darken white--text"
+                    outlined
+                    @click="updateLocalUserData">
+                    Save
+                  </v-btn>
+                </v-col>
+              </v-row>
             </v-col>
           </v-row>
         </v-form>
