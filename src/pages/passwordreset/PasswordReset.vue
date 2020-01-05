@@ -1,43 +1,43 @@
 <template>
   <v-container>
-    <v-card>
-      <v-card-title>Password Reset</v-card-title>
-      <v-card-text>
-        <v-form>
-          <v-row>
-            <v-col cols="6">
-              <v-text-field
-                dense required clearable
-                autofocus
-                type="email"
-                label="Email"
-                v-model="email"
-                @keyup.enter="submit" />
-              <v-btn
-                class="mt-6"
-                width="200"
-                color="green darken white--text"
-                outlined
-                @click="passwordReset">
-                Reset Password
-              </v-btn>
-              <p class="pt-12">
-                Don't want to change password?
-                <router-link :to="pathTo.login">Back to login</router-link>
-              </p>
-            </v-col>
-            <v-col cols="6" align="center">
-              <v-img
-                class="fill-height"
-                height="125"
-                contain
-                src="@/assets/img/vue-logo.png" />
-              <span class="subtitle-1 font-weight-bold">Revuese</span>
-            </v-col>
-          </v-row>
-        </v-form>
-      </v-card-text>
-    </v-card>
+    <v-row justify="center">
+      <v-card width="600">
+        <v-card-title>
+          Password Reset
+          <span class="font-weight-light pl-2">
+            | Revuese
+          </span>
+        </v-card-title>
+        <v-card-text>
+          <v-form>
+            <v-row>
+              <v-col>
+                <v-text-field
+                  dense required clearable
+                  autofocus
+                  type="email"
+                  label="Email"
+                  v-model="email"
+                  @keyup.enter="submit" />
+                <v-btn
+                  class="mt-6"
+                  width="200"
+                  color="green darken white--text"
+                  outlined
+                  @click="passwordReset">
+                  Reset Password
+                </v-btn>
+              </v-col>
+            </v-row>
+            <v-row class="pt-6">
+              <v-col>
+                Don't want to change password? <router-link :to="pathTo.login" class="pl-1">Back to login</router-link>
+              </v-col>
+            </v-row>
+          </v-form>
+        </v-card-text>
+      </v-card>
+    </v-row>
   </v-container>
 </template>
 

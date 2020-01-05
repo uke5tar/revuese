@@ -34,12 +34,12 @@
                   Log In
                 </v-btn>
               </v-col>
-              <v-col cols="12" md="6" class="pt-6 pt-sm-0 d-flex align-end">
+            </v-row>
+            <v-row class="pt-6">
+              <v-col cols="12">
                 Forgot password? <router-link :to="pathTo.passwordreset" class="pl-1">Reset here</router-link>
               </v-col>
-            </v-row>
-            <v-row class="pt-0 pt-sm-6">
-              <v-col>
+              <v-col cols="12">
                 You don't have an account yet?
                 <router-link :to="pathTo.signup">Sign up here</router-link>
               </v-col>

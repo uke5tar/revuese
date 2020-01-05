@@ -35,7 +35,7 @@
                 </v-btn>
               </v-col>
             </v-row>
-            <v-row class="pt-0 pt-sm-6">
+            <v-row class="pt-6">
               <v-col>
                 You already have an account?
                 <router-link :to="pathTo.login">Log in here</router-link>
