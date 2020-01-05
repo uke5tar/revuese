@@ -1,7 +1,7 @@
 <template>
   <v-container>
     <v-row justify="center">
-      <v-card max-width="600">
+      <v-card width="600">
         <v-card-title>
           Login
           <span class="font-weight-light pl-2">
@@ -10,22 +10,18 @@
         </v-card-title>
         <v-card-text>
           <v-form>
-            <v-row>
+            <v-row v-for="(value, key, index) in loginData" :key="index">
               <v-col>
-                <v-row v-for="(value, key, index) in loginData" :key="index">
-                  <v-col>
-                    <v-text-field
-                      class="text-capitalize"
-                      dense required clearable
-                      :autofocus="index === 0"
-                      :type="key === 'password' && !showPassword ? 'password' : 'text'"
-                      :append-icon="key === 'password' ? 'remove_red_eye' : ''"
-                      @click:append="showPassword = !showPassword"
-                      :label="key"
-                      v-model="loginData[key]"
-                      @keyup.enter="submit" />
-                  </v-col>
-                </v-row>
+                <v-text-field
+                  class="text-capitalize"
+                  dense required clearable
+                  :autofocus="index === 0"
+                  :type="key === 'password' && !showPassword ? 'password' : 'text'"
+                  :append-icon="key === 'password' ? 'remove_red_eye' : ''"
+                  @click:append="showPassword = !showPassword"
+                  :label="key"
+                  v-model="loginData[key]"
+                  @keyup.enter="submit" />
               </v-col>
             </v-row>
             <v-row>
@@ -45,7 +41,7 @@
             <v-row class="pt-0 pt-sm-6">
               <v-col>
                 You don't have an account yet?
-                <router-link :to="pathTo.signup">sign up here</router-link>
+                <router-link :to="pathTo.signup">Sign up here</router-link>
               </v-col>
             </v-row>
           </v-form>
