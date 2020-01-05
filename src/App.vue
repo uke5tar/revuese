@@ -21,7 +21,6 @@ import Appbar from '@components/appbar';
 import NavigationDrawer from '@components/navigation_drawer';
 import Loader from '@components/loader';
 import Snackbar from '@components/snackbar';
-import { pathTo } from '@/plugins/router/helper';
 
 export default {
   name: 'App',
