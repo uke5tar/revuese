@@ -40,7 +40,7 @@
         </v-btn>
       </v-toolbar-items>
 
-      <v-menu v-else bottom offset-y>
+      <v-menu v-else bottom offset-y transition="slide-x-transition">
         <template v-slot:activator="{ on }">
           <v-btn dark icon v-on="on">
             <v-icon>more_vert</v-icon>
