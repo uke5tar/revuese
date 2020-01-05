@@ -1,14 +1,5 @@
 <template>
   <fragment>
-    <v-btn
-      fab
-      v-show="$vuetify.breakpoint.xsOnly"
-      :class="{'clip-to-drawer' : showDrawer, 'clip-to-drawer--expanded' : expanded}"
-      :color="showDrawer ? 'red' : 'green'" dark fixed bottom left
-      :style="{'z-index' : '1100'}"
-      @click="toggleNavigationDrawer">
-      <v-icon :class="{'rotate-icon' : showDrawer}">add</v-icon>
-    </v-btn>
     <v-navigation-drawer
       v-if="$vuetify.breakpoint.smAndUp || showDrawer"
       @transitionend="expanded = !expanded"
@@ -75,6 +66,15 @@
         </v-list-item>
       </v-list>
     </v-navigation-drawer>
+    <v-btn
+      fab
+      v-show="$vuetify.breakpoint.xsOnly"
+      :class="{'clip-to-drawer' : showDrawer, 'clip-to-drawer--expanded' : expanded}"
+      :color="showDrawer ? 'red' : 'green'" dark fixed bottom left
+      :style="{'z-index' : '1100'}"
+      @click="toggleNavigationDrawer">
+      <v-icon :class="{'rotate-icon' : showDrawer}">add</v-icon>
+    </v-btn>
   </fragment>
 </template>
 
