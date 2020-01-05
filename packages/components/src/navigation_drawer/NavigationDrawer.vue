@@ -102,6 +102,11 @@ export default {
       this.expanded = false;
     },
   },
+  watch: {
+    $route () {
+      if (this.showDrawer) this.toggleNavigationDrawer();
+    },
+  },
 };
 </script>
 
