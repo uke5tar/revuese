@@ -4,8 +4,8 @@
       <v-card-title>Profile</v-card-title>
       <v-card-text>
         <v-form class="pb-12">
-          <v-row v-for="(value, key, index) in localUserData" :key="index">
-            <v-col cols="12" md="6">
+          <v-row v-for="(value, key, index) in localUserData" :key="index" class="pt-8">
+            <v-col cols="12" md="6" class="pb-0">
               <v-text-field
                 class="text-capitalize"
                 dense required clearable
@@ -17,7 +17,7 @@
                 :disabled="!isSelected(index)"
                 v-model="localUserData[key]" />
             </v-col>
-            <v-col cols="12" md="6">
+            <v-col cols="12" md="6" class="pt-0">
               <v-row>
                 <v-col cols="12" sm="6">
                   <v-btn
