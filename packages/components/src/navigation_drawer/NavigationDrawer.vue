@@ -66,15 +66,17 @@
         </v-list-item>
       </v-list>
     </v-navigation-drawer>
-    <v-btn
-      fab
-      v-show="$vuetify.breakpoint.xsOnly"
-      :class="{'clip-to-drawer' : showDrawer, 'clip-to-drawer--expanded' : expanded}"
-      :color="showDrawer ? 'red' : 'green'" dark fixed bottom left
-      :style="{'z-index' : '1100'}"
-      @click="toggleNavigationDrawer">
-      <v-icon :class="{'rotate-icon' : showDrawer}">add</v-icon>
-    </v-btn>
+    <v-fab-transition>
+      <v-btn
+        fab
+        v-show="$vuetify.breakpoint.xsOnly"
+        :class="{'clip-to-drawer' : showDrawer, 'clip-to-drawer--expanded' : expanded}"
+        :color="showDrawer ? 'red' : 'green'" dark fixed bottom left
+        :style="{'z-index' : '1100'}"
+        @click="toggleNavigationDrawer">
+        <v-icon :class="{'rotate-icon' : showDrawer}">add</v-icon>
+      </v-btn>
+    </v-fab-transition>
   </fragment>
 </template>
 
@@ -112,10 +114,11 @@ export default {
 
 <style lang="scss">
 .clip-to-drawer {
-  margin-left: 64px;
+  transition: transform .4s ease;
+  transform: translate(64px);
 
   &--expanded {
-    margin-left: 204px;
+    transform: translate(204px);
   }
 }
 
