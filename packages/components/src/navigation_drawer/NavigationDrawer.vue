@@ -3,14 +3,15 @@
     <v-btn
       fab
       v-show="$vuetify.breakpoint.xsOnly"
-      :class="{'clip-to-drawer' : showDrawer}"
+      :class="{'clip-to-drawer' : showDrawer, 'clip-to-drawer--expanded' : expanded}"
       :color="showDrawer ? 'red' : 'green'" dark fixed bottom left
       :style="{'z-index' : '1100'}"
-      @click="showDrawer = !showDrawer">
+      @click="toggleNavigationDrawer">
       <v-icon>{{ showDrawer ? 'clear' : 'add' }}</v-icon>
     </v-btn>
     <v-navigation-drawer
       v-if="$vuetify.breakpoint.smAndUp || showDrawer"
+      @transitionend="expanded = !expanded"
       v-model="showDrawer"
       expand-on-hover
       permanent
@@ -91,9 +92,16 @@ export default {
     accountItems,
     menuItems,
     showDrawer: true,
+    expanded: false,
   }),
   computed: {
     ...mapGetters('user', ['userData']),
+  },
+  methods: {
+    toggleNavigationDrawer() {
+      this.showDrawer = !this.showDrawer;
+      this.expanded = false;
+    },
   },
 };
 </script>
@@ -101,5 +109,9 @@ export default {
 <style lang="scss">
 .clip-to-drawer {
   margin-left: 64px;
+
+  &--expanded {
+    margin-left: 204px;
+  }
 }
 </style>
