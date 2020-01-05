@@ -148,7 +148,7 @@ export default {
         });
 
       if (hasUserTable) {
-        Object.keys(user).forEach((key, value) => {
+        Object.keys(user).forEach((key) => {
           const hasKeys = [this.localUserData, user].every((item) => Object.prototype.hasOwnProperty.call(item, key));
           if (hasKeys) this.localUserData[key] = user[key];
         });

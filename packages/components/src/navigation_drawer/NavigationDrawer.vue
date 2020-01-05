@@ -80,7 +80,6 @@
 
 <script>
 import { mapGetters } from 'vuex';
-import { pathTo } from '@/plugins/router/helper';
 import { accountItems, menuItems } from '@/config/navigation/navigationItems';
 import handleNavigation from '@/mixins/navigation/handleNavigation';
 
