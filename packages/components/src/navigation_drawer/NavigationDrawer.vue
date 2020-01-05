@@ -7,7 +7,7 @@
       :color="showDrawer ? 'red' : 'green'" dark fixed bottom left
       :style="{'z-index' : '1100'}"
       @click="toggleNavigationDrawer">
-      <v-icon>{{ showDrawer ? 'clear' : 'add' }}</v-icon>
+      <v-icon :class="{'rotate-icon' : showDrawer}">add</v-icon>
     </v-btn>
     <v-navigation-drawer
       v-if="$vuetify.breakpoint.smAndUp || showDrawer"
@@ -113,5 +113,9 @@ export default {
   &--expanded {
     margin-left: 204px;
   }
+}
+
+.rotate-icon {
+  transform: rotate(45deg);
 }
 </style>
