@@ -71,17 +71,20 @@ Packages/ Tools:
 3. Run npm install
 5. Create .evn.local file in root directory 
 6. Setup Firebase account: https://firebase.google.com/
-7. Go to console and create new project
-8. Copy ApiKey, AuthDomain and ProjectId into .env.local file with the following syntax:
+7. Go to console and create new web project
+8. Create a new web app for your project including firestore
+9. Setup Email/Password sign-in method for your project
+10. Create a new table named 'users' in your firestore database
+11. Copy ApiKey, AuthDomain and ProjectId into .env.local file with the following syntax:
 ```
 VUE_APP_FIREBASE_API_KEY=%%API_KEY%%
 VUE_APP_FIREBASE_AUTH_DOMAIN=%%AUTH_DOMAIN%%
 VUE_APP_FIREBASE_PROJECT_ID=%%PROJECT_ID%%
 ```
-9. Run npm start
-10. Go to localhost:8080
-11. Click on Signup here and register
-12. A new users database has been created for you (check in Firebase Admin Panel in the section 'Databases')
+12. Run npm start
+13. Go to localhost:8080
+14. Click on Signup here and register
+15. A new users database has been created for you (check in Firebase Admin Panel in the section 'Databases')
 
 
 ## Project setup
