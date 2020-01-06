@@ -3,7 +3,7 @@ Starterkit for Projects with Vue, Vuex, Vuetify and Firebase Authentication + Fi
 
 ###### @author: uke5tar
 ###### @date: 2020-04-01
-###### @demo: https://revuese.netlify.com/login
+###### @demo: https://revuese.netlify.com
 ###### @login: revuese@ilearnjavascript.com (email) / revuese (password)
 
 ## Why
