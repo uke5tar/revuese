@@ -68,7 +68,8 @@ Packages/ Tools:
 ## How to get stareted
 1. git clone https://github.com/uke5tar/revuese.git
 2. cd into revuese
-3. Run npm install
+3. Change all occurences of 'revuese' in the code with your projects'name
+4. Run npm install
 5. Create .evn.local file in root directory 
 6. Setup Firebase account: https://firebase.google.com/
 7. Go to console and create new web project
