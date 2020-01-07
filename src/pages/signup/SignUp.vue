@@ -15,6 +15,7 @@
                 <v-text-field
                   class="text-capitalize"
                   dense required clearable
+                  clear-icon="clear"
                   :autofocus="index === 0"
                   :type="setFieldType(key)"
                   :append-icon="key === 'password' ? 'remove_red_eye' : ''"

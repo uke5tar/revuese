@@ -14,6 +14,7 @@
               <v-col>
                 <v-text-field
                   dense required clearable
+                  clear-icon="clear"
                   autofocus
                   type="email"
                   label="Email"
