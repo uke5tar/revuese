@@ -1,6 +1,7 @@
 <template>
   <v-navigation-drawer
     v-if="$vuetify.breakpoint.smAndUp || showDrawer"
+    v-on-clickaway="() => setShowDrawer(false)"
     :value="showDrawer"
     expand-on-hover
     permanent
@@ -68,11 +69,15 @@
 
 <script>
 import { mapGetters, mapActions } from 'vuex';
+import { directive as onClickaway } from 'vue-clickaway';
 import { accountItems, menuItems } from '@/config/navigation/navigationItems';
 import handleNavigation from '@/mixins/navigation/handleNavigation';
 
 export default {
   name: 'NavigationDrawer',
+  directives: {
+    onClickaway,
+  },
   mixins: [handleNavigation],
   data: () => ({
     showAccountList: false,
@@ -85,13 +90,10 @@ export default {
   },
   methods: {
     ...mapActions('current', ['setShowDrawer']),
-    toggleNavigationDrawer() {
-      this.setShowDrawer(!this.showDrawer);
-    },
   },
   watch: {
     $route () {
-      if (this.showDrawer) this.toggleNavigationDrawer();
+      if (this.showDrawer) this.setShowDrawer(!this.showDrawer);
     },
   },
 };
