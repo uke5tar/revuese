@@ -74,7 +74,7 @@
         :color="showDrawer ? 'red' : 'green'" dark fixed bottom left
         :style="{'z-index' : '1100'}"
         @click="toggleNavigationDrawer">
-        <v-icon :class="{'rotate-icon' : showDrawer}">add</v-icon>
+        <v-icon :class="{'rotate-icon' : showDrawer}">{{ showDrawer ? 'clear' : 'menu' }}</v-icon>
       </v-btn>
     </v-fab-transition>
   </fragment>
@@ -123,6 +123,6 @@ export default {
 }
 
 .rotate-icon {
-  transform: rotate(45deg);
+  transform: rotate(180deg);
 }
 </style>
