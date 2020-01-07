@@ -8,13 +8,22 @@
       clipped-left
       width="100%"
       data-cy="appbar">
+      <v-btn
+        text
+        rounded
+        color="white"
+        v-if="$vuetify.breakpoint.xs"
+        @click="setShowDrawer(!showDrawer)">
+        <v-icon :class="{'rotate-icon' : showDrawer}">{{ showDrawer ? 'clear' : 'menu' }}</v-icon>
+      </v-btn>
       <router-link
         to="/"
         class="white--text no-link-style">
         <v-toolbar-title class="d-flex align-center font-italic font-weight-thin">
           <v-img
+            v-if="$vuetify.breakpoint.smAndUp"
             class="fill-height"
-            height="50"
+            height="40"
             contain
             src="@/assets/img/vue-logo.png" />
           <span v-show="$vuetify.breakpoint.smAndUp">revuese</span>
@@ -68,6 +77,7 @@
 </template>
 
 <script>
+import { mapGetters, mapActions } from 'vuex';
 import { pathTo } from '@/plugins/router/helper';
 import { accountItems } from '@/config/navigation/navigationItems';
 import handleNavigation from '@/mixins/navigation/handleNavigation';
@@ -80,6 +90,12 @@ export default {
     pathTo,
     pageName: '',
   }),
+  computed: {
+    ...mapGetters('current', ['showDrawer']),
+  },
+  methods: {
+    ...mapActions('current', ['setShowDrawer']),
+  },
   watch: {
     $route () {
       this.pageName = this.$router.currentRoute.name;
@@ -87,3 +103,10 @@ export default {
   },
 };
 </script>
+
+<style lang="scss" scoped>
+.rotate-icon {
+  transition: transform .4s ease;
+  transform: rotate(90deg);
+}
+</style>

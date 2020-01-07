@@ -4,6 +4,7 @@ import * as run from '@/plugins/store/helper/storeCreator';
 const items = [
   'snackbar',
   'loader',
+  'showDrawer',
 ];
 
 export default {

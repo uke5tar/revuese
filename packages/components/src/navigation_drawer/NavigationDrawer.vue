@@ -1,87 +1,73 @@
 <template>
-  <fragment>
-    <v-navigation-drawer
-      v-if="$vuetify.breakpoint.smAndUp || showDrawer"
-      @transitionend="expanded = !expanded"
-      v-model="showDrawer"
-      expand-on-hover
-      permanent
-      app
-      left
-      clipped
-      width="220">
-      <template v-slot:prepend>
-        <v-list>
-          <v-list-item
-            link two-line
-            @click="showAccountList = !showAccountList">
-            <v-list-item-content>
-              <v-list-item-title class="title text-capitalize">
-                {{ userData.displayName }}
-              </v-list-item-title>
-              <v-list-item-subtitle>
-                {{ userData.email }}
-              </v-list-item-subtitle>
-            </v-list-item-content>
-          </v-list-item>
-          <v-list-item
-            v-for="item in accountItems"
-            v-show="showAccountList"
-            :id="item.id"
-            :key="item.title"
-            class="navigation_drawer__account-list"
-            :prepend-icon="item.icon"
-            link
-            @click="handleNavigation(item)"
-            data-cy="navigationdrawer_nav-item">
-            <v-list-item-action>
-              <v-icon>
-                {{ item.icon }}
-              </v-icon>
-            </v-list-item-action>
-            <v-list-item-content>
-              <v-list-item-title class="body-2">
-                {{ item.title }}
-              </v-list-item-title>
-            </v-list-item-content>
-          </v-list-item>
-        </v-list>
-      </template>
-
-      <v-divider />
-
-      <v-list nav dense>
-        <v-list-item v-for="item in menuItems" :key="item.title" :to="item.path" link>
+  <v-navigation-drawer
+    v-if="$vuetify.breakpoint.smAndUp || showDrawer"
+    :value="showDrawer"
+    expand-on-hover
+    permanent
+    app
+    left
+    clipped
+    width="220">
+    <template v-slot:prepend>
+      <v-list>
+        <v-list-item
+          link two-line
+          @click="showAccountList = !showAccountList">
+          <v-list-item-content>
+            <v-list-item-title class="title text-capitalize">
+              {{ userData.displayName }}
+            </v-list-item-title>
+            <v-list-item-subtitle>
+              {{ userData.email }}
+            </v-list-item-subtitle>
+          </v-list-item-content>
+        </v-list-item>
+        <v-list-item
+          v-for="item in accountItems"
+          v-show="showAccountList"
+          :id="item.id"
+          :key="item.title"
+          class="navigation_drawer__account-list"
+          :prepend-icon="item.icon"
+          link
+          @click="handleNavigation(item)"
+          data-cy="navigationdrawer_nav-item">
           <v-list-item-action>
             <v-icon>
               {{ item.icon }}
             </v-icon>
           </v-list-item-action>
-
           <v-list-item-content>
-            <v-list-item-title>
+            <v-list-item-title class="body-2">
               {{ item.title }}
             </v-list-item-title>
           </v-list-item-content>
         </v-list-item>
       </v-list>
-    </v-navigation-drawer>
-    <v-fab-transition>
-      <v-btn
-        fab
-        v-show="$vuetify.breakpoint.xsOnly"
-        :class="{'clip-to-drawer' : showDrawer, 'clip-to-drawer--expanded' : expanded}"
-        :color="showDrawer ? 'red' : 'green'" dark fixed bottom left
-        :style="{'z-index' : '1100'}"
-        @click="toggleNavigationDrawer">
-        <v-icon :class="{'rotate-icon' : showDrawer}">{{ showDrawer ? 'clear' : 'menu' }}</v-icon>
-      </v-btn>
-    </v-fab-transition>
-  </fragment>
+    </template>
+
+    <v-divider />
+
+    <v-list nav dense>
+      <v-list-item v-for="item in menuItems" :key="item.title" :to="item.path" link>
+        <v-list-item-action>
+          <v-icon>
+            {{ item.icon }}
+          </v-icon>
+        </v-list-item-action>
+
+        <v-list-item-content>
+          <v-list-item-title>
+            {{ item.title }}
+          </v-list-item-title>
+        </v-list-item-content>
+      </v-list-item>
+    </v-list>
+  </v-navigation-drawer>
 </template>
 
 <script>
-import { mapGetters } from 'vuex';
+import { mapGetters, mapActions } from 'vuex';
 import { accountItems, menuItems } from '@/config/navigation/navigationItems';
 import handleNavigation from '@/mixins/navigation/handleNavigation';
 
@@ -92,16 +78,15 @@ export default {
     showAccountList: false,
     accountItems,
     menuItems,
-    showDrawer: true,
-    expanded: false,
   }),
   computed: {
     ...mapGetters('user', ['userData']),
+    ...mapGetters('current', ['showDrawer']),
   },
   methods: {
+    ...mapActions('current', ['setShowDrawer']),
     toggleNavigationDrawer() {
-      this.showDrawer = !this.showDrawer;
-      this.expanded = false;
+      this.setShowDrawer(!this.showDrawer);
     },
   },
   watch: {
@@ -111,18 +96,3 @@ export default {
   },
 };
 </script>
-
-<style lang="scss">
-.clip-to-drawer {
-  transition: transform .4s ease;
-  transform: translate(64px);
-
-  &--expanded {
-    transform: translate(204px);
-  }
-}
-
-.rotate-icon {
-  transform: rotate(180deg);
-}
-</style>
