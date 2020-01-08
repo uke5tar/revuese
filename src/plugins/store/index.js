@@ -11,6 +11,7 @@ const ls = new SecureLS({ isCompression: false });
 Vue.use(Vuex);
 
 export default new Vuex.Store({
+  strict: true,
   plugins: [createPersistedState({
     key: 'countMyFood',
     storage: {
