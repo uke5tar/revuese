@@ -23,7 +23,6 @@ Special features:
 -- Firebase Authentication (.env.local with api credentials needed) with individual methods on prototype ($firebase, $fireauth and $firestore)
 -- Comes with login, logout, signup and password-reset pages and the built-in logic needed for that to authenticate.
 - Automatic creation of an user database in firestore after signup
--- Vuefire and Vuexfire setup for keeping data in sync
 
 Other features:
 - Vuetify component library with robo-font and material design icon library locally installed via npm 
@@ -57,7 +56,6 @@ Packages/ Tools:
 - Vuex
 - Vuex persistant state (persist after reload)
 - Vuetify
-- Vuefire, Vuexfire
 - Secure-ls to encrypt local vuex state
 - Webpack
 - Babel
