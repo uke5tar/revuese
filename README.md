@@ -6,13 +6,8 @@ Starterkit for Projects with Vue, Vuex, Vuetify and Firebase Authentication + Fi
 ###### @demo: https://revuese.netlify.com
 ###### @login: revuese@ilearnjavascript.com (email) / revuese (password)
 
-## Why
-Most apps require some sort of authentication and a database to store values. The basic architecture for this is usually quite similar. We have login, logout, signup and password-reset pages/ logic. We have a profile component to change the user information. We have a user's database and need to set it up/ communicate with it. We have routing that redirects if a page is accessed that requires authentication and the user is not authenticated or redirects if pages like the login page are requested after the user is already authenticated.
-Usually we also have vuex, persistent state (state persist after reload) and want that state to be saved encrypted locally to not give away sensitive information.
-Additionally we mostly have some sort of navigation panel (appbar, navigation drawer), modals, a loader while data is fetched, a snackbar to show errors, success messages and other reusable standard components. To not reinvent the wheel all components are based on vuetify.
-Furthermore we often have eslinting rules, some babel tweaks (e.g. optional chaining and nullish-coalescing-operator), we want our scss to be transformed to css and maybe set some aliases in Webpack.
-Creating this repetitive architecture takes usually a few days before we are ready to carve our actual idea out of code.
-This is what this starterkit is for to save you time and let you jump into developing your actual application straight away.
+## About
+Don't bother reinventing the wheel for each project. Use this starter kit to jump into developing your idea straight away without setting up authentication, routing, vuex, firestore and much more yourself. Find out what features await you:
 
 Special features:
 - Dynamic routing
