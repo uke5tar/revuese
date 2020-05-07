@@ -83,7 +83,10 @@ Packages/ Tools:
 - Husky (Git hooks)
 
 
-## Project setup
+## Commands
+See: 'How to get started' for detailed project setup instructions.
+
+### Project setup
 ```
 npm install
 ```
