@@ -7,8 +7,32 @@ Starterkit for Projects with Vue, Vuex, Vuetify and Firebase Authentication + Fi
 ###### @login: revuese@ilearnjavascript.com (email) / revuese (password)
 
 ## About
-Don't bother reinventing the wheel for each project. Use this starter kit to jump into developing your idea straight away without setting up authentication, routing, vuex, firestore and much more yourself. Find out what features await you:
+Don't bother reinventing the wheel for each project. Use this vue-starter-kit/ vue-boilerplate with google firestore-authentication to jump into developing your idea straight away. Get authentication (firestore), dynamic routing, state management (vuex), the powerful vuetify component library, SCSS support, a modern testing Setup (Cypress & Jest), the latest bable plugins (optional chaining/ nullish-coalescing-operator) and much more ready configured for your next project.
 
+## How to get started
+1. git clone https://github.com/uke5tar/revuese.git
+2. cd into revuese
+3. Change all occurences of 'revuese' in the code with your projects'name
+4. Run npm install
+5. Create .evn.local file in root directory 
+6. Setup Firebase account: https://firebase.google.com/
+7. Go to console and create new web project
+8. Create a new web app for your project including firestore
+9. Setup Email/Password sign-in method for your project
+10. Create a new table named 'users' in your firestore database
+11. Copy ApiKey, AuthDomain and ProjectId into .env.local file with the following syntax:
+```
+VUE_APP_FIREBASE_API_KEY=%%API_KEY%%
+VUE_APP_FIREBASE_AUTH_DOMAIN=%%AUTH_DOMAIN%%
+VUE_APP_FIREBASE_PROJECT_ID=%%PROJECT_ID%%
+```
+12. Run npm start
+13. Go to localhost:8080
+14. Click on Signup here and register
+15. A new users database has been created for you (check in Firebase Admin Panel in the section 'Databases')
+
+
+## Features
 Special features:
 - Dynamic routing
 -- Each folder within src/pages will be automagically turned into a route (see src/plugins/router/helper.js) 
@@ -57,28 +81,6 @@ Packages/ Tools:
 - Jest (unit)
 - Cypress (E2E)
 - Husky (Git hooks)
-
-## How to get stareted
-1. git clone https://github.com/uke5tar/revuese.git
-2. cd into revuese
-3. Change all occurences of 'revuese' in the code with your projects'name
-4. Run npm install
-5. Create .evn.local file in root directory 
-6. Setup Firebase account: https://firebase.google.com/
-7. Go to console and create new web project
-8. Create a new web app for your project including firestore
-9. Setup Email/Password sign-in method for your project
-10. Create a new table named 'users' in your firestore database
-11. Copy ApiKey, AuthDomain and ProjectId into .env.local file with the following syntax:
-```
-VUE_APP_FIREBASE_API_KEY=%%API_KEY%%
-VUE_APP_FIREBASE_AUTH_DOMAIN=%%AUTH_DOMAIN%%
-VUE_APP_FIREBASE_PROJECT_ID=%%PROJECT_ID%%
-```
-12. Run npm start
-13. Go to localhost:8080
-14. Click on Signup here and register
-15. A new users database has been created for you (check in Firebase Admin Panel in the section 'Databases')
 
 
 ## Project setup
