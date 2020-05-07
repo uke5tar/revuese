@@ -14,7 +14,7 @@ Don't bother reinventing the wheel for each project. Use this vue-starter-kit/ v
 2. cd into revuese
 3. Change all occurences of 'revuese' in the code with your projects'name
 4. Run npm install
-5. Create .evn.local file in root directory 
+5. Create .env.local file in root directory 
 6. Setup Firebase account: https://firebase.google.com/
 7. Go to console and create new web project
 8. Create a new web app for your project including firestore
