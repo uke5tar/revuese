@@ -12,9 +12,11 @@
     "test": "vue-cli-service test:unit && vue-cli-service test:e2e"
   },
   "dependencies": {
+    "@mdi/font": "^5.1.45",
     "core-js": "^3.6.5",
     "firebase": "^7.14.2",
     "husky": "^3.1.0",
+    "lodash": "^4.17.15",
     "register-service-worker": "^1.7.1",
     "sass-resources-loader": "^2.0.3",
     "secure-ls": "^1.2.6",
