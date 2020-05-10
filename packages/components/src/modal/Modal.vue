@@ -5,27 +5,29 @@
       :value="showModal"
       persistent
       scrollable
-      hide-overlay
       :fullscreen="isFullScreen"
       :max-width="modalWidth"
-      @click:outside="cancel"
-      @keydown.esc="cancel"
-      @keydown.enter="save">
+      @click:outside="clickOutside ? cancel($event) : false"
+      @keydown.esc="cancel">
       <v-card class="grabber">
-        <v-card-title>
-          <span class="headline">{{ headline }}</span>
+        <v-card-title class="pr-12">
+          <span class="headline" style="word-break: break-word;">{{ headline }}</span>
         </v-card-title>
         <v-card-subtitle v-if="$slots['header']" class="modal_header">
           <slot name="header" />
         </v-card-subtitle>
         <v-card-text v-if="hasTextField" :style="{height: modalHeight}">
-          <v-container class="pl-0 pr-0">
+          <v-container class="pl-0 pr-0" v-if="!isFullScreen">
             <slot />
           </v-container>
+          <slot v-else />
         </v-card-text>
         <v-card-actions>
+          <span v-if="saveBtnDisabled" class="pl-5 red--text font-italic">
+            {{ saveBtnDisabledMsg }}
+          </span>
           <v-spacer />
-          <v-btn color="blue darken-1" text @click="cancel">
+          <v-btn color="blue darken-1" text @click="cancel" v-if="showCancelBtn">
             Cancel
           </v-btn>
           <v-btn color="green darken-1" text @click="save" :disabled="saveBtnDisabled">
@@ -89,9 +91,25 @@ export default {
       type: Boolean,
       default: false,
     },
+    saveBtnDisabledMsg: {
+      type: String,
+      default: '',
+    },
     saveBtnName: {
       type: String,
       default: 'Save',
+    },
+    showCancelBtn: {
+      type: Boolean,
+      default: true,
+    },
+    clickOutside: {
+      type: Boolean,
+      default: true,
+    },
+    disableMovableModal: {
+      type: Boolean,
+      default: false,
     },
   },
   methods: {
@@ -116,10 +134,12 @@ export default {
   },
   watch: {
     showModal() {
-      if (this.showModal) {
-        this.initMovableModal();
-      } else if (this.movableModal) {
-        this.movableModal.destroy();
+      if (!this.disableMovableModal) {
+        if (this.showModal) {
+          this.initMovableModal();
+        } else if (this.movableModal) {
+          this.movableModal.destroy();
+        }
       }
     },
   },
