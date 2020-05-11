@@ -16,6 +16,7 @@
                   class="text-capitalize"
                   dense required clearable
                   clear-icon="clear"
+                  :tabindex="index + 1"
                   :autofocus="index === 0"
                   :type="setFieldType(key)"
                   :append-icon="key === 'password' ? 'remove_red_eye' : ''"
