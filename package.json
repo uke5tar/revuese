@@ -22,7 +22,7 @@
     "secure-ls": "^1.2.6",
     "typeface-roboto": "0.0.75",
     "vue": "^2.6.11",
-    "vue-clickaway": "^2.2.2",
+    "vue-clickaway2": "^2.3.2",
     "vue-fragment": "^1.5.1",
     "vue-page-transition": "^0.2.2",
     "vue-router": "^3.1.6",

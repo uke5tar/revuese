@@ -69,7 +69,7 @@
 
 <script>
 import { mapGetters, mapActions } from 'vuex';
-import { directive as onClickaway } from 'vue-clickaway';
+import { directive as onClickaway } from 'vue-clickaway2';
 import { accountItems, menuItems } from '@/config/navigation/navigationItems';
 import handleNavigation from '@/mixins/navigation/handleNavigation';
 
