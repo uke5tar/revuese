@@ -19,7 +19,16 @@ Don't bother reinventing the wheel for each project. Use this vue-starter-kit/ v
 7. Go to console and create new web project
 8. Create a new web app for your project including firestore
 9. Setup Email/Password sign-in method for your project
-10. Create a new table named 'users' in your firestore database
+10. Create a new table named 'users' in your firestore database (you can use Auto ID) and change the database rule to
+```
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /{document=**} {
+       allow read, write: if request.auth.uid != null;
+    }
+  }
+}
+```
 11. Copy ApiKey, AuthDomain and ProjectId into .env.local file with the following syntax:
 ```
 VUE_APP_FIREBASE_API_KEY=%%API_KEY%%
