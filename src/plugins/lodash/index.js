@@ -5,7 +5,7 @@ import Vue from 'vue';
     How to use:
     1. import lodash methods here via `import {method} from 'lodash/{method}`
     2. add it to customLodash Object
-    3. use it in the app via `$this._.{method}`
+    3. use it in the app via `this._.{method}`
 */
 const customLodash = {};
 
