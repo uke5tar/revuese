@@ -1,5 +1,5 @@
 # revuese
-Starterkit for Projects with Vue, Vuex, Vuetify and Firebase Authentication + Firestore DB.
+Starterkit/ Boilerplate for Projects with Vue, Vuex, Vuetify and Firebase Authentication + Firestore DB.
 
 ###### @author: uke5tar
 ###### @date: 2020-04-01
