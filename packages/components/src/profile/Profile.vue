@@ -130,7 +130,7 @@ export default {
         currentUser
           .updatePassword(localUserData.password)
           .then(() => {
-            this.setSnackbarSuccess({ text: 'Userdata successfully updated' });
+            this.setSnackbarSuccess({ text: 'Password successfully updated' });
             this.selectedId = '';
           })
           .catch((error) => {
