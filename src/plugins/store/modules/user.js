@@ -47,7 +47,7 @@ export default {
 
     setLogout ({ dispatch }) {
       dispatch('setUSER_DATA', initialState.user);
-      window.localStorage.removeItem('countMyFood');
+      window.localStorage.removeItem('revuese');
       window.location.reload();
     },
 

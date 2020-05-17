@@ -12,7 +12,7 @@ Vue.use(Vuex);
 export default new Vuex.Store({
   strict: true,
   plugins: [createPersistedState({
-    key: 'countMyFood',
+    key: 'revuese',
     storage: {
       getItem: (key) => ls.get(key),
       setItem: (key, value) => ls.set(key, value),
