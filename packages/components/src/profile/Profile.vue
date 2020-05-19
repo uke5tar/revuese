@@ -64,14 +64,15 @@ import Modal from '@components/modal';
 import snackbarMethods from '@/mixins/snackbar';
 import logout from '@/mixins/auth/logout';
 import loaderMethods from '@/mixins/loader';
-import updateUserDatabase from '@/mixins/firestore/users/updateUserDatabase';
+import updateDataFrom from '@/mixins/firestore/updateDataFrom';
+import { USERS } from '@/config/firestore';
 
 export default {
   name: 'Profile',
   components: {
     Modal,
   },
-  mixins: [logout, loaderMethods, updateUserDatabase, snackbarMethods],
+  mixins: [logout, loaderMethods, updateDataFrom, snackbarMethods],
   data: () => ({
     localUserData: {
       displayName: '',
@@ -102,7 +103,7 @@ export default {
         currentUser.updateProfile({ displayName: localUserData.displayName })
           .then(() => {
             this.setUserData({ displayName: localUserData.displayName });
-            this.updateUserDatabase({ displayName: localUserData.displayName });
+            this.updateDataFrom(USERS, { displayName: localUserData.displayName });
             this.selectedId = '';
             this.setSnackbarSuccess({ text: 'Display name successfully updated' });
           })
