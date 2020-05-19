@@ -51,6 +51,8 @@ Special features:
 -- Firebase Authentication (.env.local with api credentials needed) with individual methods on prototype ($firebase, $fireauth and $firestore)
 -- Comes with login, logout, signup and password-reset pages and the built-in logic needed for that to authenticate.
 - Automatic creation of an user database in firestore after signup
+- Firebase CRUD methods
+-- Essential Firebase methods are abstracted into reusable mixins (addDatabase, getData, mergeData, removeField, updateData) 
 
 Other features:
 - Vuetify component library with robo-font and material design icon library locally installed via npm 
