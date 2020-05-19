@@ -58,6 +58,7 @@ Other features:
 - ForceRerender mixin that updates the clean way in Vue via updating a key of the desired component
 - Page transitions via docs: https://www.npmjs.com/package/vue-page-transition
 - Vue fragments via docs: https://www.npmjs.com/package/vue-fragment
+- i18n multi-language support
 
 Components (prebuilt):
 - Login, Signup, Passwordreset (before auth)
