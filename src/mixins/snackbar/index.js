@@ -3,6 +3,7 @@ import { mapActions } from 'vuex';
 export default {
   methods: {
     ...mapActions('current', ['setSnackbar']),
+
     setSnackbarSaved(data) {
       this.setSnackbar({
         text: 'Saved', color: 'success', icon: 'done', ...data,

@@ -40,7 +40,7 @@
           </v-list-item-action>
           <v-list-item-content>
             <v-list-item-title class="body-2">
-              {{ item.title }}
+              {{ $t(`navigation.${item.title.toLowerCase()}`) }}
             </v-list-item-title>
           </v-list-item-content>
         </v-list-item>
@@ -59,7 +59,7 @@
 
         <v-list-item-content>
           <v-list-item-title>
-            {{ item.title }}
+            {{ $t(`navigation.${item.title.toLowerCase()}`) }}
           </v-list-item-title>
         </v-list-item-content>
       </v-list-item>

@@ -28,7 +28,7 @@
           </span>
           <v-spacer />
           <v-btn color="blue darken-1" text @click="cancel" v-if="showCancelBtn">
-            Cancel
+            {{ $t('app.cancel') }}
           </v-btn>
           <v-btn color="green darken-1" text @click="save" :disabled="saveBtnDisabled">
             {{ saveBtnName }}

@@ -1,7 +1,9 @@
 <template>
   <v-container>
     <v-card>
-      <v-card-title>Profile</v-card-title>
+      <v-card-title>
+        {{ $t('profile.profile') }}
+      </v-card-title>
       <v-card-text>
         <v-form class="pb-12">
           <v-row v-for="(value, key, index) in localUserData" :key="index" class="pt-8">
@@ -14,7 +16,7 @@
                 :type="key === 'password' && !showPassword ? 'password' : 'text'"
                 :append-icon="key === 'password' ? 'remove_red_eye' : ''"
                 @click:append="showPassword = !showPassword"
-                :label="key"
+                :label="$t(`profile.${key}`)"
                 :disabled="!isSelected(index)"
                 v-model="localUserData[key]" />
             </v-col>
@@ -29,7 +31,7 @@
                     <v-icon left>
                       {{ !isSelected(index) ? 'edit' : 'clear' }}
                     </v-icon>
-                    {{ !isSelected(index) ? 'Edit' : 'Cancel' }}
+                    {{ !isSelected(index) ? `${$t('app.edit')}` : `${$t('app.cancel')}` }}
                   </v-btn>
                 </v-col>
                 <v-col cols="12" sm="6">
@@ -38,7 +40,7 @@
                     color="green darken white--text"
                     outlined
                     @click="updateLocalUserData">
-                    Save
+                    {{ $t('app.save') }}
                   </v-btn>
                 </v-col>
               </v-row>
@@ -48,8 +50,8 @@
       </v-card-text>
     </v-card>
     <Modal
-      headline="Reauthenticaten required"
-      save-btn-name="Reauthenticate"
+      :headline="$t('profile.reauthenticationRequired')"
+      :save-btn-name="$t('profile.reauthenticate')"
       :show-modal="showModal"
       @save="logout"
       @cancel="showModal = false">
@@ -105,7 +107,7 @@ export default {
             this.setUserData({ displayName: localUserData.displayName });
             this.updateDataFrom(USERS, { displayName: localUserData.displayName });
             this.selectedId = '';
-            this.setSnackbarSuccess({ text: 'Display name successfully updated' });
+            this.setSnackbarSuccess({ text: `${this.$t('profile.displayName')} successfully updated` });
           })
           .catch((error) => {
             this.setSnackbarError({ text: error.message });
@@ -117,7 +119,7 @@ export default {
           .then(() => {
             this.setUserData({ email: localUserData.email });
             this.selectedId = '';
-            this.setSnackbarSuccess({ text: 'Email successfully updated' });
+            this.setSnackbarSuccess({ text: `${this.$t('profile.email')} successfully updated` });
           })
           .catch((error) => {
             if (error.code === 'auth/requires-recent-login') {
@@ -131,7 +133,7 @@ export default {
         currentUser
           .updatePassword(localUserData.password)
           .then(() => {
-            this.setSnackbarSuccess({ text: 'Password successfully updated' });
+            this.setSnackbarSuccess({ text: `${this.$t('profile.password')} successfully updated` });
             this.selectedId = '';
           })
           .catch((error) => {

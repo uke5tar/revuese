@@ -3,7 +3,7 @@
     <v-row justify="center">
       <v-card width="600">
         <v-card-title>
-          Sign up
+          {{ $t('signup.signup') }}
           <span class="font-weight-light pl-2">
             | Revuese
           </span>
@@ -33,14 +33,16 @@
                   color="green darken white--text"
                   outlined
                   @click="submit">
-                  Sign up
+                  {{ $t('signup.signup') }}
                 </v-btn>
               </v-col>
             </v-row>
             <v-row class="pt-6">
               <v-col>
-                You already have an account?
-                <router-link :to="pathTo.login">Log in here</router-link>
+                {{ $t('signup.accountExist') }}?
+                <router-link :to="pathTo.login">
+                  {{ $t('signup.login') }}
+                </router-link>
               </v-col>
             </v-row>
           </v-form>

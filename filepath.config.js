@@ -7,6 +7,7 @@ module.exports = {
   src: resolve('src'),
   components: resolve('packages/components/src'),
   styles: resolve('src/assets/scss'),
+  locales: resolve('src/locales'),
   globalSassFiles: [
     resolve('src/assets/scss/styleguide.scss'),
     resolve('src/assets/scss/global.scss'),

@@ -3,6 +3,7 @@ import { mapActions } from 'vuex';
 export default {
   methods: {
     ...mapActions('current', ['setLoader']),
+
     showLoader() {
       this.setLoader(true);
     },

@@ -1,0 +1,47 @@
+{
+    "app": {
+        "cancel": "Cancel",
+        "edit": "Edit",
+        "save": "Save"
+    },
+    "error": {
+        "title": "Error"
+      },
+    "login": {
+        "login": "Log in",
+        "passwordForgotten": "Forgot password",
+        "noAccount": "You don't have an account yet",
+        "reset": "Reset here",
+        "signup": "Sign up here"
+    },
+    "navigation": {
+        "account": "Account",
+        "home": "Home",
+        "logout": "Logout",
+        "settings": "Settings"
+      },
+    "passwordReset": {
+        "backToLogin": "Back to login",
+        "noPasswordChange": "Don't want to change password",
+        "passwordReset": "Password Reset",
+        "resetPassword": "Reset Password",
+        "passwordResetEmailSend": "Password reset email send"
+    },
+    "profile": {
+        "profile": "Profile",
+        "reauthenticationRequired": "Reauthentication required",
+        "reauthenticate": "Reauthenticate",
+        "displayName": "Display name",
+        "email": "Email",
+        "password": "Password"
+      },
+    "settings": {
+        "settings": "Settings",
+        "language": "Language"
+    },
+    "signup": {
+        "accountExist": "You already have an account",
+        "login": "Log in here",
+        "signup": "Sign Up"
+    }
+}
