@@ -3,7 +3,7 @@
     <v-row justify="center">
       <v-card width="600">
         <v-card-title>
-          Password Reset
+          {{ $t('passwordReset.passwordReset') }}
           <span class="font-weight-light pl-2">
             | Revuese
           </span>
@@ -26,13 +26,15 @@
                   color="green darken white--text"
                   outlined
                   @click="passwordReset">
-                  Reset Password
+                  {{ $t('passwordReset.resetPassword') }}
                 </v-btn>
               </v-col>
             </v-row>
             <v-row class="pt-6">
               <v-col>
-                Don't want to change password? <router-link :to="pathTo.login" class="pl-1">Back to login</router-link>
+                {{ $t('passwordReset.noPasswordChange') }}? <router-link :to="pathTo.login" class="pl-1">
+                  {{ $t('passwordReset.backToLogin') }}
+                </router-link>
               </v-col>
             </v-row>
           </v-form>
@@ -57,7 +59,7 @@ export default {
     passwordReset() {
       this.$fireauth.sendPasswordResetEmail(this.email)
         .then(() => {
-          this.setSnackbarSuccess({ text: 'Password reset email send' });
+          this.setSnackbarSuccess({ text: this.$t('passwordReset.passwordResetEmailSend') });
           this.$router.push(pathTo.login);
         })
         .catch((error) => {

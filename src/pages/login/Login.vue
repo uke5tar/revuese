@@ -3,7 +3,7 @@
     <v-row justify="center">
       <v-card width="600">
         <v-card-title>
-          Login
+          {{ $t('login.login') }}
           <span class="font-weight-light pl-2">
             | Revuese
           </span>
@@ -33,17 +33,19 @@
                   color="green darken white--text"
                   outlined
                   @click="submit">
-                  Log In
+                  {{ $t('login.login') }}
                 </v-btn>
               </v-col>
             </v-row>
             <v-row class="pt-6">
               <v-col cols="12">
-                Forgot password? <router-link :to="pathTo.passwordreset" class="pl-1">Reset here</router-link>
+                {{ $t('login.passwordForgotten') }}? <router-link :to="pathTo.passwordreset" class="pl-1">
+                  {{ $t('login.reset') }}
+                </router-link>
               </v-col>
               <v-col cols="12">
-                You don't have an account yet?
-                <router-link :to="pathTo.signup">Sign up here</router-link>
+                {{ $t('login.noAccount') }}?
+                <router-link :to="pathTo.signup">{{ $t('login.signup') }}</router-link>
               </v-col>
             </v-row>
           </v-form>

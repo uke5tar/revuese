@@ -23,6 +23,9 @@ export default {
     userIsAuthenticated(state) {
       return state.isAuthenticated;
     },
+    userUid (state) {
+      return state.data.uid;
+    },
   },
 
   actions: {

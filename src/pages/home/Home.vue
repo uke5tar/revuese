@@ -1,7 +1,7 @@
 <template>
   <v-container>
     <v-card>
-      <v-card-title center>Home</v-card-title>
+      <v-card-title center>{{ $t('navigation.home') }}</v-card-title>
     </v-card>
   </v-container>
 </template>

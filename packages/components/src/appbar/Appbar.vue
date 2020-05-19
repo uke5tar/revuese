@@ -31,7 +31,9 @@
       </router-link>
 
       <v-spacer />
-      <Title type="h1" class="font-weight-light text-capitalize">{{ pageName }}</Title>
+      <Title type="h1" class="font-weight-light text-capitalize">
+        {{ $t(`navigation.${pageName}`) }}
+      </Title>
       <v-spacer />
 
       <v-toolbar-items class="align-center" v-if="$vuetify.breakpoint.smAndUp">
@@ -63,7 +65,7 @@
             @click="handleNavigation(item)"
             data-cy="appbar_nav-item">
             <v-list-item-title>
-              {{ item.title }}
+              {{ $t(`navigation.${item.title.toLowerCase()}`) }}
             </v-list-item-title>
             <v-list-item-icon>
               <v-icon>{{ item.icon }}</v-icon>

@@ -16,10 +16,20 @@ module.exports = {
         .end();
     });
 
+    // i18n
+    config.module
+      .rule('i18n')
+      .resourceQuery(/blockType=i18n/)
+      .type('javascript/auto')
+      .use('i18n')
+      .loader('@kazupon/vue-i18n-loader')
+      .end();
+
     // webpack alias
     config.resolve.alias
       .set('@components', pathTo.components)
-      .set('@styles', pathTo.styles);
+      .set('@styles', pathTo.styles)
+      .set('@locales', pathTo.locales);
 
 
     return config;
