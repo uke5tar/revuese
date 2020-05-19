@@ -3,6 +3,12 @@ import VueI18n from 'vue-i18n';
 
 Vue.use(VueI18n);
 
+/*
+  How to use:
+  Add additional translation files to /local and translate the keys
+  Add country key to /config/defaults/index.js languages array
+*/
+
 function loadLocaleMessages () {
   const locales = require.context('@/locales', true, /[A-Za-z0-9-_,\s]+\.json$/i);
   const messages = {};
