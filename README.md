@@ -16,10 +16,10 @@ Don't bother reinventing the wheel for each project. Use this vue-starter-kit/ v
 4. Run npm install
 5. Create .env.local file in root directory 
 6. Setup Firebase account: https://firebase.google.com/
-7. Go to console and create new web project
+7. Go to console (https://console.firebase.google.com/) and create new web project
 8. Create a new web app for your project including firestore
-9. Setup Email/Password sign-in method for your project
-10. Create a new table named 'users' in your firestore database (you can use Auto ID) and change the database rule to
+9. Go within firebase console to the tab Authentication - Sign-in Method and enable Email/Password as sign-in method for your project
+10. Go within firebase console to Database and create a new table named 'users' in your firestore database (you can use Auto ID) and change the database rule to
 ```
 service cloud.firestore {
   match /databases/{database}/documents {
@@ -39,6 +39,7 @@ VUE_APP_FIREBASE_PROJECT_ID=%%PROJECT_ID%%
 13. Go to localhost:8080
 14. Click on Signup here and register
 15. A new users database has been created for you (check in Firebase Admin Panel in the section 'Databases')
+16. Firebase provides free Hosting for your app. Go to the tab Hosting within the firebase console to see your project's subdomain url.
 
 
 ## Features
