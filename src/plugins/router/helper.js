@@ -9,7 +9,7 @@ const createDynamicPagePaths = () => {
   const paths = {};
 
   pathNames.forEach((pathName) => {
-    paths[pathName] = pathName === HOME ? '/' : `/${pathName}`;
+    paths[pathName] = pathName === HOME ? '/' : `/${pathName.replace('_', '-')}`;
   });
 
   return paths;
@@ -20,7 +20,9 @@ export const pathTo = {
 };
 
 export const createDynamicRoutes = () => {
-  const pathNames = getAllFiles(require.context('@/pages/', true, /\.(vue)$/i));
+  const pathNames = getAllFiles(require.context('@/pages/', true, /\.(vue)$/i))
+    .map((path) => path.replace('_', '-'));
+
   const pagesRequireNoAuth = [
     pathTo.login,
     pathTo.signup,
@@ -31,8 +33,8 @@ export const createDynamicRoutes = () => {
   const dynamicRoutes = pathNames.map((pathName) => {
     const route = {
       path: pathName === HOME ? pathTo.home : `/${pathName}`,
-      name: pathName,
-      component: () => import(`@/pages/${pathName}`),
+      name: pathName.replace('-', ' '),
+      component: () => import(`@/pages/${pathName.replace('-', '_')}`),
       meta: {
         requiresAuth: !pagesRequireNoAuth.includes(`/${pathName}`),
       },
@@ -55,10 +57,11 @@ export const checkAuth = (to, from, next) => {
   const pathRequiresAuth = to.matched.some((record) => record.meta.requiresAuth);
   const shouldRedirectIfAuthenticated = to.matched.some((record) => redirectIfAuthenticated.includes(record.path));
   const userIsAuthenticated = store.getters['user/userIsAuthenticated'];
+  const isPageReload = from.name === null;
 
   if (pathRequiresAuth && !userIsAuthenticated) {
     next({ path: pathTo.login });
-  } else if (userIsAuthenticated && shouldRedirectIfAuthenticated) {
+  } else if (userIsAuthenticated && shouldRedirectIfAuthenticated && !isPageReload) {
     next({ path: pathTo.home });
   } else {
     next();
