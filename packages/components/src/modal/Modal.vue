@@ -5,7 +5,7 @@
       :value="showModal"
       persistent
       scrollable
-      :fullscreen="isFullScreen"
+      :fullscreen="isFullScreen || showFullScreen"
       :max-width="modalWidth"
       @click:outside="clickOutside ? cancel($event) : false"
       @keydown.esc="cancel">
@@ -76,6 +76,10 @@ export default {
       default: true,
     },
     toggleFullScreen: {
+      type: Boolean,
+      default: false,
+    },
+    showFullScreen: {
       type: Boolean,
       default: false,
     },
