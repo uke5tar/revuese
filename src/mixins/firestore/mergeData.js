@@ -7,12 +7,12 @@ export default {
     ...mapGetters('user', ['userUid']),
   },
   methods: {
-    mergeData(dbKey, data, merge = true) {
+    mergeData(dbKey, data, merge = true, id = this.userUid) {
       this.showLoader();
 
       return this.$firestore
         .collection(dbKey)
-        .doc(this.userUid)
+        .doc(id)
         .set(data, { merge })
         .then(() => {
           this.hideLoader();

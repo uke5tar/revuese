@@ -7,12 +7,12 @@ export default {
     ...mapGetters('user', ['userUid']),
   },
   methods: {
-    addDatabase(dbKey, data) {
+    addDatabase(dbKey, data, id = this.userUid) {
       this.showLoader();
 
       return this.$firestore
         .collection(dbKey)
-        .doc(this.userUid)
+        .doc(id)
         .set(data)
         .then(() => {
           this.hideLoader();

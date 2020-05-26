@@ -7,10 +7,10 @@ export default {
     ...mapGetters('user', ['userUid']),
   },
   methods: {
-    async getDataFrom(dbKey) {
+    async getDataFrom(dbKey, id = this.userUid) {
       this.showLoader();
 
-      const db = await this.$firestore.collection(dbKey).doc(this.userUid).get().then((doc) => doc);
+      const db = await this.$firestore.collection(dbKey).doc(id).get().then((doc) => doc);
       this.hideLoader();
 
       return db.exists ? db.data() : false;
