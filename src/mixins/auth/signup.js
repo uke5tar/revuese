@@ -1,10 +1,10 @@
 import { mapActions } from 'vuex';
-import addDatabase from '@/mixins/firestore/addDatabase';
+import addNamedCollection from '@/mixins/firestore/addNamedCollection';
 import { USERS } from '@/config/firestore';
 import snackbarMethods from '@/mixins/snackbar';
 
 export default {
-  mixins: [addDatabase, snackbarMethods],
+  mixins: [addNamedCollection, snackbarMethods],
   methods: {
     ...mapActions('user', ['setLogin']),
 
@@ -20,7 +20,7 @@ export default {
         const { user } = firebaseUser;
         await user.updateProfile({ displayName });
         await this.setLogin(user);
-        await this.addDatabase(USERS, { displayName: user.displayName });
+        await this.addNamedCollection(USERS, { displayName: user.displayName });
 
         return true;
       }

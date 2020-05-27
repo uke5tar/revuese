@@ -53,7 +53,7 @@ Special features:
 -- Comes with login, logout, signup and password-reset pages and the built-in logic needed for that to authenticate.
 - Automatic creation of an user database in firestore after signup
 - Firebase CRUD methods
--- Essential Firebase methods are abstracted into reusable mixins (addDatabase, getData, mergeData, removeField, updateData) 
+-- Essential Firebase methods are abstracted into reusable mixins (addNamedCollection, addAutoIdCollection, getData, mergeData, removeField, updateData, overwriteData) with userUid by default
 
 Other features:
 - Vuetify component library with robo-font and material design icon library locally installed via npm 
