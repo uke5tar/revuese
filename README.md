@@ -59,9 +59,9 @@ Other features:
 - Vuetify component library with robo-font and material design icon library locally installed via npm 
 - Opiniated eslint configuration with airbnb config (without prettier)
 - ForceRerender mixin that updates the clean way in Vue via updating a key of the desired component
-- Page transitions via docs: https://www.npmjs.com/package/vue-page-transition
-- Vue fragments via docs: https://www.npmjs.com/package/vue-fragment
-- i18n multi-language support
+- Page transitions: https://www.npmjs.com/package/vue-page-transition
+- Vue fragments: https://www.npmjs.com/package/vue-fragment
+- i18n multi-language support: https://kazupon.github.io/vue-i18n/
 
 Components (prebuilt):
 - Login, Signup, Passwordreset (before auth)
