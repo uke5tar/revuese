@@ -30,7 +30,7 @@
           <v-btn color="blue darken-1" text @click="cancel" v-if="showCancelBtn">
             {{ $t('app.cancel') }}
           </v-btn>
-          <v-btn color="green darken-1" text @click="save" :disabled="saveBtnDisabled">
+          <v-btn color="green darken-1" text @click="save" :disabled="saveBtnDisabled" v-if="showSaveBtn">
             {{ saveBtnName }}
           </v-btn>
         </v-card-actions>
@@ -104,6 +104,10 @@ export default {
       default: 'Save',
     },
     showCancelBtn: {
+      type: Boolean,
+      default: true,
+    },
+    showSaveBtn: {
       type: Boolean,
       default: true,
     },
