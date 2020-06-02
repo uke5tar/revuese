@@ -3,7 +3,8 @@
     v-if="$vuetify.breakpoint.smAndUp || showDrawer"
     v-on-clickaway="() => setShowDrawer(false)"
     :value="showDrawer"
-    expand-on-hover
+    :expand-on-hover="$vuetify.breakpoint.smAndUp"
+    :temporary="$vuetify.breakpoint.xs"
     permanent
     app
     left
