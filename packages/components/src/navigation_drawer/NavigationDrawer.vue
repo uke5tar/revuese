@@ -20,7 +20,10 @@
               {{ userData.displayName }}
             </v-list-item-title>
             <v-list-item-subtitle>
-              {{ userData.email }}
+              <span>{{ userData.email }}</span>
+              <v-icon right>
+                {{ showAccountList ? 'expand_less' : 'expand_more' }}
+              </v-icon>
             </v-list-item-subtitle>
           </v-list-item-content>
         </v-list-item>
