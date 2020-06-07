@@ -7,7 +7,7 @@ export default {
 
     firestoreRefs() {
       return {
-        [USERS]: this.$firestore
+        [USERS]: async () => this.$firestore
           .collection(USERS)
           .doc(this.userUid),
       };

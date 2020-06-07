@@ -4,10 +4,10 @@ import loaderMethods from '@/mixins/loader';
 export default {
   mixins: [firestoreRefs, loaderMethods],
   methods: {
-    addAutoIdCollection(dbKey, data) {
+    async addAutoIdCollection(dbKey, data) {
       this.showLoader();
 
-      return this.firestoreRefs[dbKey].add(data).then(() => {
+      return (await this.firestoreRefs[dbKey]()).add(data).then(() => {
         this.hideLoader();
 
         return true;
