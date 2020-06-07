@@ -1,9 +1,8 @@
 import updateDataFrom from '@/mixins/firestore/updateDataFrom';
-import snackbarMethods from '@/mixins/snackbar';
 import loaderMethods from '@/mixins/loader';
 
 export default {
-  mixins: [updateDataFrom, loaderMethods, snackbarMethods],
+  mixins: [updateDataFrom, loaderMethods],
   methods: {
     async removeFieldFrom(dbKey, fieldKey) {
       this.showLoader();
