@@ -1,24 +1,17 @@
-import { mapGetters } from 'vuex';
+import firestoreRefs from '@/mixins/firestore/firestoreRefs';
 import loaderMethods from '@/mixins/loader';
 
 export default {
-  mixins: [loaderMethods],
-  computed: {
-    ...mapGetters('user', ['userUid']),
-  },
+  mixins: [firestoreRefs, loaderMethods],
   methods: {
-    mergeData(dbKey, data, merge = true, id = this.userUid) {
+    mergeData(dbKey, data) {
       this.showLoader();
 
-      return this.$firestore
-        .collection(dbKey)
-        .doc(id)
-        .set(data, { merge })
-        .then(() => {
-          this.hideLoader();
+      return this.firestoreRefs[dbKey].set(data, { merge: true }).then(() => {
+        this.hideLoader();
 
-          return true;
-        });
+        return true;
+      });
     },
   },
 };

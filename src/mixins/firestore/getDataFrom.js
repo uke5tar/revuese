@@ -1,16 +1,13 @@
-import { mapGetters } from 'vuex';
 import loaderMethods from '@/mixins/loader';
+import firestoreRefs from '@/mixins/firestore/firestoreRefs';
 
 export default {
-  mixins: [loaderMethods],
-  computed: {
-    ...mapGetters('user', ['userUid']),
-  },
+  mixins: [firestoreRefs, loaderMethods],
   methods: {
-    async getDataFrom(dbKey, id = this.userUid) {
+    async getDataFrom(dbKey) {
       this.showLoader();
 
-      const db = await this.$firestore.collection(dbKey).doc(id).get().then((doc) => doc);
+      const db = await this.firestoreRefs[dbKey].get().then((doc) => doc);
       this.hideLoader();
 
       return db.exists ? db.data() : false;

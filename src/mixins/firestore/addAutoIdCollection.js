@@ -1,19 +1,17 @@
+import firestoreRefs from '@/mixins/firestore/firestoreRefs';
 import loaderMethods from '@/mixins/loader';
 
 export default {
-  mixins: [loaderMethods],
+  mixins: [firestoreRefs, loaderMethods],
   methods: {
     addAutoIdCollection(dbKey, data) {
       this.showLoader();
 
-      return this.$firestore
-        .collection(dbKey)
-        .add(data)
-        .then(() => {
-          this.hideLoader();
+      return this.firestoreRefs[dbKey].add(data).then(() => {
+        this.hideLoader();
 
-          return true;
-        });
+        return true;
+      });
     },
   },
 };
