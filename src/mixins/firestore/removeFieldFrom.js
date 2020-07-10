@@ -1,19 +1,17 @@
 import updateDataFrom from '@/mixins/firestore/updateDataFrom';
-import loaderMethods from '@/mixins/loader';
+import mergeData from '@/mixins/firestore/mergeData';
 
 export default {
-  mixins: [updateDataFrom, loaderMethods],
+  mixins: [updateDataFrom, mergeData],
   methods: {
     async removeFieldFrom(dbKey, fieldKey) {
-      this.showLoader();
+      const objToDelete = { [fieldKey]: this.$firebase.firestore.FieldValue.delete() };
+      // firebase perceives a dot as a nested object and can't delete it via the update method
+      const hasDotInFieldKey = fieldKey.indexOf('.') !== -1;
 
-      const isUpdated = await this.updateDataFrom(dbKey, {
-        [fieldKey]: this.$firebase.firestore.FieldValue.delete(),
-      });
-
-      this.hideLoader();
-
-      return isUpdated;
+      return hasDotInFieldKey
+        ? await this.mergeData(dbKey, objToDelete)
+        : await this.updateDataFrom(dbKey, objToDelete);
     },
   },
 };

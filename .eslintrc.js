@@ -22,6 +22,7 @@ module.exports = {
     'import/prefer-default-export': 'off',
     'space-before-function-paren': 'off',
     'no-console': 'off',
+    'no-return-await': 'off',
     'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off',
     'no-unused-vars': process.env.NODE_ENV === 'production' ? 'error' : 'off',
     'import/extensions': [
