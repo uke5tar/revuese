@@ -19,7 +19,7 @@ Don't bother reinventing the wheel for each project. Use this vue-starter-kit/ v
 7. Go to console (https://console.firebase.google.com/) and create new web project
 8. Create a new web app for your project including firestore
 9. Go within firebase console to the tab Authentication - Sign-in Method and enable Email/Password as sign-in method for your project
-10. Go within firebase console to Database and create a new table named 'users' in your firestore database (you can use Auto ID) and change the database rule to
+10. Go within firebase console to Database and create a new collection named 'users' in your firestore database (you can use Auto ID) and change the database rule to
 ```
 service cloud.firestore {
   match /databases/{database}/documents {
