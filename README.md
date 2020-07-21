@@ -10,7 +10,7 @@ Starterkit/ Boilerplate for Projects with Vue, Vuex, Vuetify and Firebase Authen
 Don't bother reinventing the wheel for each project. Use this vue-starter-kit/ vue-boilerplate with google firestore-authentication to jump into developing your idea straight away. Get authentication (firestore), dynamic routing, state management (vuex), the powerful vuetify component library, SCSS support, a modern testing Setup (Cypress & Jest), the latest bable plugins (optional chaining/ nullish-coalescing-operator) and much more ready configured for your next project.
 
 ## How to get started
-1. git clone https://github.com/uke5tar/revuese.git
+1. Fork this repository and clone your forked version to your local machine
 2. cd into revuese
 3. Change all occurences of 'revuese' in the code with your projects'name
 4. Run npm install
