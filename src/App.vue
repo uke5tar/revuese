@@ -11,6 +11,7 @@
       </v-container>
     </v-main>
     <v-footer app />
+    <Cookiebanner />
     <Snackbar />
   </v-app>
 </template>
@@ -20,6 +21,7 @@ import { mapGetters } from 'vuex';
 import Appbar from '@components/appbar';
 import NavigationDrawer from '@components/navigation_drawer';
 import Loader from '@components/loader';
+import Cookiebanner from '@components/cookiebanner';
 import Snackbar from '@components/snackbar';
 
 export default {
@@ -28,6 +30,7 @@ export default {
     Appbar,
     NavigationDrawer,
     Loader,
+    Cookiebanner,
     Snackbar,
   },
   computed: {
