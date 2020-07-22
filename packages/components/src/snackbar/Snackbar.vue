@@ -5,7 +5,7 @@
     :value="show"
     @mouseenter="onMouseEnter"
     @mouseleave="onMouseLeave"
-    :timeout="0">
+    :timeout="-1">
     {{ text }}
     <v-btn
       icon

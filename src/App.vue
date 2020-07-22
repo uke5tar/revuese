@@ -2,14 +2,14 @@
   <v-app>
     <Appbar v-if="userIsAuthenticated" />
     <NavigationDrawer v-if="userIsAuthenticated" />
-    <v-content>
+    <v-main>
       <Loader :show="loader" />
       <v-container fluid>
         <vue-page-transition name="fade-in-down">
           <router-view :class="{'max-1000': $vuetify.breakpoint.lgAndDown}" />
         </vue-page-transition>
       </v-container>
-    </v-content>
+    </v-main>
     <v-footer app />
     <Snackbar />
   </v-app>
