@@ -23,6 +23,7 @@ import NavigationDrawer from '@components/navigation_drawer';
 import Loader from '@components/loader';
 import Cookiebanner from '@components/cookiebanner';
 import Snackbar from '@components/snackbar';
+import loaderMethods from '@/mixins/loader';
 
 export default {
   name: 'App',
@@ -33,9 +34,14 @@ export default {
     Cookiebanner,
     Snackbar,
   },
+  mixins: [loaderMethods],
   computed: {
     ...mapGetters('user', ['userIsAuthenticated']),
     ...mapGetters('current', ['loader']),
+  },
+  created() {
+    // reset loader if wrongly state has been stored accidentally
+    this.hideLoader(0);
   },
 };
 </script>
