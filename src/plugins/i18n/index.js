@@ -6,7 +6,7 @@ Vue.use(VueI18n);
 /*
   How to use:
   Add additional translation files to /local and translate the keys
-  Add country key to /config/defaults/index.js languages array
+  Add country key to /config/languages/index.js languages array
 */
 
 function loadLocaleMessages () {

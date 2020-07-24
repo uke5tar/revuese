@@ -11,6 +11,11 @@
     "error": {
         "title": "Error"
       },
+    "language": {
+        "language": "Language",
+        "appLanguage": "Site language",
+        "appLanguageHint": "Choose a language for the app to be displayed in"
+      },
     "login": {
         "login": "Log in",
         "passwordForgotten": "Forgot password",
@@ -21,6 +26,7 @@
     "navigation": {
         "account": "Account",
         "home": "Home",
+        "language": "Language",
         "logout": "Logout",
         "settings": "Settings"
       },
