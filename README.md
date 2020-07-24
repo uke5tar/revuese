@@ -135,7 +135,7 @@ npm run test:e2e
 npm run lint
 ```
 
-### Lints and fixes files
+### Deploy
 ```
 npm run deploy
 ```
