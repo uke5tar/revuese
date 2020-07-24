@@ -62,6 +62,7 @@ Other features:
 - Page transitions: https://www.npmjs.com/package/vue-page-transition
 - Vue fragments: https://www.npmjs.com/package/vue-fragment
 - i18n multi-language support: https://kazupon.github.io/vue-i18n/
+- ISO-639-1 languagecode formatting for clean language names
 
 Components (prebuilt):
 - Login, Signup, Passwordreset (before auth)
@@ -133,6 +134,12 @@ npm run test:e2e
 ```
 npm run lint
 ```
+
+### Lints and fixes files
+```
+npm run deploy:firebase
+```
+
 
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
