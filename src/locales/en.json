@@ -28,7 +28,9 @@
         "home": "Home",
         "language": "Language",
         "logout": "Logout",
-        "settings": "Settings"
+        "passwordreset": "Password",
+        "settings": "Settings",
+        "signup": "Sign up"
       },
     "passwordReset": {
         "backToLogin": "Back to login",
