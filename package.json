@@ -9,7 +9,8 @@
     "test:e2e": "vue-cli-service test:e2e",
     "lint": "vue-cli-service lint",
     "start": "npm run serve",
-    "test": "vue-cli-service test:unit && vue-cli-service test:e2e"
+    "test": "vue-cli-service test:unit && vue-cli-service test:e2e",
+    "deploy:firebase": "npm run build && firebase deploy"
   },
   "dependencies": {
     "@mdi/font": "^5.3.45",
