@@ -32,7 +32,7 @@
 
       <v-spacer />
       <Title type="h1" class="font-weight-light text-capitalize">
-        {{ pageName && $t(`navigation.${pageName}`) }}
+        {{ pageName && $t(`navigation.${pageName.replace(/\s/g, '')}`) }}
       </Title>
       <v-spacer />
 

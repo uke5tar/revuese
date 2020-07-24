@@ -55,10 +55,13 @@
 <script>
 import { pathTo } from '@/plugins/router/helper';
 import signUp from '@/mixins/auth/signup';
+import updateDataFrom from '@/mixins/firestore/updateDataFrom';
+import { USERS } from '@/config/firestore';
+import availableLanguages from '@/config/languages';
 
 export default {
   name: 'SignUpForm',
-  mixins: [signUp],
+  mixins: [signUp, updateDataFrom],
   data: () => ({
     signupData: {
       displayName: '',
@@ -75,11 +78,18 @@ export default {
       if (this.showPassword) type = 'text';
       return type;
     },
+    async setDefaultLanguage() {
+      const browserLanguage = (window.navigator.userLanguage || window.navigator.language).slice(0, 2);
+      const languageCode = availableLanguages.includes(browserLanguage) ? browserLanguage : 'en';
+
+      await this.updateDataFrom(USERS, { appLanguage: languageCode });
+    },
     async submit() {
       await this.signUp(...Object.values(this.signupData))
-        .then((success) => {
+        .then(async (success) => {
           if (success) {
             this.$router.push(pathTo.home);
+            await this.setDefaultLanguage();
           }
         })
         .catch((error) => {

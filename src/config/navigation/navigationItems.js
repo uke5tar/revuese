@@ -9,6 +9,12 @@ export const accountItems = [
     path: pathTo.account,
   },
   {
+    title: 'Language',
+    icon: 'language',
+    id: 'language',
+    path: pathTo.language,
+  },
+  {
     title: 'Settings',
     icon: 'settings',
     id: 'settings',

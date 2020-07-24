@@ -9,7 +9,7 @@ const createDynamicPagePaths = () => {
   const paths = {};
 
   pathNames.forEach((pathName) => {
-    paths[pathName] = pathName === HOME ? '/' : `/${pathName.replace('_', '-')}`;
+    paths[pathName] = pathName === HOME ? '/' : `/${pathName.replace(/_/g, '-')}`;
   });
 
   return paths;
@@ -21,7 +21,7 @@ export const pathTo = {
 
 export const createDynamicRoutes = () => {
   const pathNames = getAllFiles(require.context('@/pages/', true, /\.(vue)$/i))
-    .map((path) => path.replace('_', '-'));
+    .map((path) => path.replace(/_/g, '-'));
 
   const pagesRequireNoAuth = [
     pathTo.login,
@@ -33,8 +33,8 @@ export const createDynamicRoutes = () => {
   const dynamicRoutes = pathNames.map((pathName) => {
     const route = {
       path: pathName === HOME ? pathTo.home : `/${pathName}`,
-      name: pathName.replace('-', ' '),
-      component: () => import(`@/pages/${pathName.replace('-', '_')}`),
+      name: pathName.replace(/-/g, ' '),
+      component: () => import(`@/pages/${pathName.replace(/-/g, '_')}`),
       meta: {
         requiresAuth: !pagesRequireNoAuth.includes(`/${pathName}`),
       },
