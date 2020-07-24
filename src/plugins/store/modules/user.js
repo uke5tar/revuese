@@ -1,11 +1,9 @@
-import _default from '@/config/defaults';
-
 const initialState = {
   data: {
     displayName: null,
     email: null,
     uid: null,
-    language: _default.language,
+    appLanguage: null,
   },
   isAuthenticated: false,
 };
@@ -26,6 +24,9 @@ export default {
     userUid (state) {
       return state.data.uid;
     },
+    appLanguage (state) {
+      return state.data.appLanguage;
+    },
   },
 
   actions: {
@@ -33,8 +34,8 @@ export default {
       dispatch('setUSER_DATA', userData);
     },
 
-    setUserLanguage ({ dispatch }, language) {
-      dispatch('setUSER_LANGUAGE', language);
+    setAppLanguage ({ dispatch }, appLanguage) {
+      dispatch('setAPP_LANGUAGE', appLanguage);
     },
 
     setLogin ({ dispatch }, user) {
@@ -60,8 +61,8 @@ export default {
     setUSER_AUTH ({ commit }, authStatus) {
       commit('setUSER_AUTH', authStatus);
     },
-    setUSER_LANGUAGE({ commit }, language) {
-      commit('setUSER_LANGUAGE', language);
+    setAPP_LANGUAGE({ commit }, appLanguage) {
+      commit('setAPP_LANGUAGE', appLanguage);
     },
   },
 
@@ -72,8 +73,8 @@ export default {
     setUSER_AUTH(state, authStatus) {
       state.isAuthenticated = authStatus;
     },
-    setUSER_LANGUAGE(state, language) {
-      state.data.language = language;
+    setAPP_LANGUAGE(state, appLanguage) {
+      state.data.appLanguage = appLanguage;
     },
   },
 };
