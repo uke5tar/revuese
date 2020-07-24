@@ -137,7 +137,7 @@ npm run lint
 
 ### Lints and fixes files
 ```
-npm run deploy:firebase
+npm run deploy
 ```
 
 
