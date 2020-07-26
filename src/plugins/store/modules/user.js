@@ -1,6 +1,6 @@
 const initialState = {
   data: {
-    displayName: null,
+    userName: null,
     email: null,
     uid: null,
     appLanguage: null,
@@ -40,7 +40,7 @@ export default {
 
     setLogin ({ dispatch }, user) {
       const userData = {
-        displayName: user.displayName,
+        userName: user.userName,
         email: user.email,
         uid: user.uid,
       };

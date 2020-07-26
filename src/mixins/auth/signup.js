@@ -8,7 +8,7 @@ export default {
   methods: {
     ...mapActions('user', ['setLogin']),
 
-    async signUp(displayName, email, password) {
+    async signUp(userName, email, password) {
       const firebaseUser = await this.$fireauth
         .createUserWithEmailAndPassword(email, password)
         .then((payload) => payload)
@@ -18,9 +18,9 @@ export default {
 
       if (firebaseUser) {
         const { user } = firebaseUser;
-        await user.updateProfile({ displayName });
+        await user.updateProfile({ userName });
         await this.setLogin(user);
-        await this.addNamedCollection(USERS, { displayName: user.displayName });
+        await this.addNamedCollection(USERS, { userName: user.userName });
 
         return true;
       }
