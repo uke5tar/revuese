@@ -32,6 +32,7 @@
                   width="200"
                   color="green darken white--text"
                   outlined
+                  :disabled="!isValidSignup"
                   @click="submit">
                   {{ $t('signup.signup') }}
                 </v-btn>
@@ -71,6 +72,11 @@ export default {
     showPassword: false,
     pathTo,
   }),
+  computed: {
+    isValidSignup() {
+      return Object.keys(this.signupData).every((item) => this.signupData[item]?.length > 0);
+    },
+  },
   methods: {
     setFieldType(key) {
       const validInputTypes = ['text', 'email', 'password'];
