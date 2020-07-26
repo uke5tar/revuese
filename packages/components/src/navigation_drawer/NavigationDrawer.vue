@@ -17,7 +17,7 @@
           @click="showAccountList = !showAccountList">
           <v-list-item-content>
             <v-list-item-title class="title text-capitalize">
-              {{ userData.userName }}
+              {{ userData.displayName }}
             </v-list-item-title>
             <v-list-item-subtitle>
               <span>{{ userData.email }}</span>

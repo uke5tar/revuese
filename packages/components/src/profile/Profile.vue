@@ -77,7 +77,7 @@ export default {
   mixins: [logout, loaderMethods, updateDataFrom, snackbarMethods],
   data: () => ({
     localUserData: {
-      userName: '',
+      displayName: '',
       email: '',
       password: '',
     },
@@ -101,13 +101,13 @@ export default {
       const { currentUser } = this.$fireauth;
       const { userData, localUserData } = this;
 
-      if (userData.userName !== localUserData.userName) {
-        currentUser.updateProfile({ userName: localUserData.userName })
+      if (userData.displayName !== localUserData.displayName) {
+        currentUser.updateProfile({ displayName: localUserData.displayName })
           .then(() => {
-            this.setUserData({ userName: localUserData.userName });
-            this.updateDataFrom(USERS, { userName: localUserData.userName });
+            this.setUserData({ displayName: localUserData.displayName });
+            this.updateDataFrom(USERS, { displayName: localUserData.displayName });
             this.selectedId = '';
-            this.setSnackbarSuccess({ text: `${this.$t('profile.userName')} successfully updated` });
+            this.setSnackbarSuccess({ text: `${this.$t('profile.displayName')} successfully updated` });
           })
           .catch((error) => {
             this.setSnackbarError({ text: error.message });

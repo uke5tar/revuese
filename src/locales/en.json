@@ -43,7 +43,7 @@
         "profile": "Profile",
         "reauthenticationRequired": "Reauthentication required",
         "reauthenticate": "Reauthenticate",
-        "userName": "User name",
+        "displayName": "Display name",
         "email": "Email",
         "password": "Password"
       },
