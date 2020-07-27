@@ -1,7 +1,7 @@
 <template>
   <v-navigation-drawer
     v-if="$vuetify.breakpoint.smAndUp || showDrawer"
-    v-on-clickaway="() => setShowDrawer(false)"
+    v-click-outside="() => setShowDrawer(false)"
     :value="showDrawer"
     :expand-on-hover="$vuetify.breakpoint.smAndUp"
     :temporary="$vuetify.breakpoint.xs"
@@ -73,15 +73,11 @@
 
 <script>
 import { mapGetters, mapActions } from 'vuex';
-import { directive as onClickaway } from 'vue-clickaway2';
 import { accountItems, menuItems } from '@/config/navigation/navigationItems';
 import handleNavigation from '@/mixins/navigation/handleNavigation';
 
 export default {
   name: 'NavigationDrawer',
-  directives: {
-    onClickaway,
-  },
   mixins: [handleNavigation],
   data: () => ({
     showAccountList: false,
