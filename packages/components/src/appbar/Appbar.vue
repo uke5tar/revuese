@@ -38,7 +38,7 @@
 
       <v-toolbar-items class="align-center" v-if="$vuetify.breakpoint.smAndUp">
         <v-btn
-          v-for="item in accountItems"
+          v-for="item in userIsAuthenticated ? accountItems : noAuthItems"
           :id="item.id"
           :key="item.title"
           icon
@@ -81,7 +81,7 @@
 <script>
 import { mapGetters, mapActions } from 'vuex';
 import { pathTo } from '@/plugins/router/helper';
-import { accountItems } from '@/config/navigation/navigationItems';
+import { accountItems, noAuthItems } from '@/config/navigation/navigationItems';
 import handleNavigation from '@/mixins/navigation/handleNavigation';
 
 export default {
@@ -89,11 +89,13 @@ export default {
   mixins: [handleNavigation],
   data: () => ({
     accountItems,
+    noAuthItems,
     pathTo,
     pageName: '',
   }),
   computed: {
     ...mapGetters('current', ['showDrawer']),
+    ...mapGetters('user', ['userIsAuthenticated']),
   },
   methods: {
     ...mapActions('current', ['setShowDrawer']),

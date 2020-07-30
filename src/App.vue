@@ -1,7 +1,7 @@
 <template>
   <v-app>
-    <Appbar v-if="userIsAuthenticated" />
-    <NavigationDrawer v-if="userIsAuthenticated" />
+    <Appbar />
+    <NavigationDrawer />
     <v-main>
       <Loader :show="loader" />
       <v-container fluid>
@@ -40,7 +40,7 @@ export default {
   }),
   mixins: [loaderMethods],
   computed: {
-    ...mapGetters('user', ['userIsAuthenticated', 'appLanguage']),
+    ...mapGetters('user', ['appLanguage']),
     ...mapGetters('current', ['loader']),
   },
   methods: {

@@ -11,7 +11,7 @@
     clipped
     width="220">
     <template v-slot:prepend>
-      <v-list>
+      <v-list v-if="userIsAuthenticated">
         <v-list-item
           link two-line
           @click="showAccountList = !showAccountList">
@@ -54,7 +54,10 @@
     <v-divider />
 
     <v-list nav dense>
-      <v-list-item v-for="item in menuItems" :key="item.title" :to="item.path" link>
+      <v-list-item
+        v-for="item in filterNavigationItems(menuItems)"
+        :key="item.title"
+        :to="item.path" link>
         <v-list-item-action>
           <v-icon>
             {{ item.icon }}
@@ -85,11 +88,29 @@ export default {
     menuItems,
   }),
   computed: {
-    ...mapGetters('user', ['userData']),
+    ...mapGetters('user', ['userData', 'userIsAuthenticated']),
     ...mapGetters('current', ['showDrawer']),
   },
   methods: {
     ...mapActions('current', ['setShowDrawer']),
+
+    filterNavigationItems(navigationItems) {
+      const filterByUserRole = (() => navigationItems.filter((item) => {
+        if (!item.role || item.role === this.userData.role) {
+          return true;
+        }
+        return false;
+      }))();
+
+      const filterByAuthStatus = (() => navigationItems.filter((item) => {
+        if (!item.auth || item.auth === this.userIsAuthenticated) {
+          return true;
+        }
+        return false;
+      }))();
+
+      return filterByUserRole && filterByAuthStatus;
+    },
   },
   watch: {
     $route () {

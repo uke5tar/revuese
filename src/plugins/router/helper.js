@@ -23,12 +23,7 @@ export const createDynamicRoutes = () => {
   const pathNames = getAllFiles(require.context('@/pages/', true, /\.(vue)$/i))
     .map((path) => path.replace(/_/g, '-'));
 
-  const pagesRequireNoAuth = [
-    pathTo.login,
-    pathTo.signup,
-    pathTo.error,
-    pathTo.passwordreset,
-  ];
+  const pagesRequireAuth = [];
 
   const dynamicRoutes = pathNames.map((pathName) => {
     const route = {
@@ -36,7 +31,7 @@ export const createDynamicRoutes = () => {
       name: pathName.replace(/-/g, ' '),
       component: () => import(`@/pages/${pathName.replace(/-/g, '_')}`),
       meta: {
-        requiresAuth: !pagesRequireNoAuth.includes(`/${pathName}`),
+        requiresAuth: pagesRequireAuth.includes(`/${pathName}`),
       },
     };
 
