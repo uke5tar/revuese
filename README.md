@@ -50,7 +50,8 @@ Special features:
 -- The store comes with two pre-build Modules. 'User' and Current'. The latter one is special because state, getters, actions and mutations are automagically created by simply adding the name for it into a predefined array thus avoiding to write unnecessary boilerplate code. It works only for simple state values that don't specific specific calculations (see src/plugins/store/helper/storeCreator.js) 
 - Firebase Authentication
 -- Firebase Authentication (.env.local with api credentials needed) with individual methods on prototype ($firebase, $fireauth and $firestore)
--- Comes with login, logout, signup and password-reset pages and the built-in logic needed for that to authenticate.
+-- Comes with login, logout, signup and password-reset pages and the built-in logic needed for that to authenticate. See page 'Authenticated' for an example.
+-- Each user gets after signup by default the role 'guest'. See page 'Guest' for an example.
 - Automatic creation of an user database in firestore after signup
 - Firebase CRUD methods
 -- Essential Firebase methods are abstracted into reusable mixins (addNamedCollection, addAutoIdCollection, getData, mergeData, removeField, updateData, overwriteData) that read from a firestoreRefs object with individual pathes based on your firestore database schema.
