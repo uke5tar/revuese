@@ -20,7 +20,7 @@ export default {
         const { user } = firebaseUser;
         await user.updateProfile({ displayName });
         await this.setLogin(user);
-        await this.addNamedCollection(USERS, { displayName: user.displayName });
+        await this.addNamedCollection(USERS, { displayName: user.displayName, role: 'guest' });
 
         return true;
       }
