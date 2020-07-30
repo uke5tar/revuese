@@ -26,8 +26,10 @@
     "navigation": {
         "account": "Account",
         "authenticated": "Authenticated",
-        "guest": "Guest",
+        "dataprivacy": "Dataprivacy",
         "home": "Home",
+        "guest": "Guest",
+        "imprint": "Imprint",
         "language": "Language",
         "login": "Login",
         "logout": "Logout",

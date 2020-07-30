@@ -71,12 +71,33 @@
         </v-list-item-content>
       </v-list-item>
     </v-list>
+
+    <v-list nav dense>
+      <v-list nav dense style="position: absolute; bottom: 0;">
+        <v-list-item
+          v-for="item in additionalItems"
+          :key="item.title"
+          :to="item.path" link>
+          <v-list-item-action>
+            <v-icon class="grey--text">
+              {{ item.icon }}
+            </v-icon>
+          </v-list-item-action>
+
+          <v-list-item-content>
+            <v-list-item-title class="grey--text text--darken-1">
+              {{ $t(`navigation.${item.title.toLowerCase()}`) }}
+            </v-list-item-title>
+          </v-list-item-content>
+        </v-list-item>
+      </v-list>
+    </v-list>
   </v-navigation-drawer>
 </template>
 
 <script>
 import { mapGetters, mapActions } from 'vuex';
-import { accountItems, menuItems } from '@/config/navigation/navigationItems';
+import { accountItems, menuItems, additionalItems } from '@/config/navigation/navigationItems';
 import handleNavigation from '@/mixins/navigation/handleNavigation';
 
 export default {
@@ -86,6 +107,7 @@ export default {
     showAccountList: false,
     accountItems,
     menuItems,
+    additionalItems,
   }),
   computed: {
     ...mapGetters('user', ['userData', 'userIsAuthenticated']),
