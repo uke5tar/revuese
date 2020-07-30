@@ -61,3 +61,16 @@ export const menuItems = [
     role: 'guest',
   },
 ];
+
+export const additionalItems = [
+  {
+    title: 'Dataprivacy',
+    icon: 'remove',
+    path: pathTo.dataprivacy,
+  },
+  {
+    title: 'Imprint',
+    icon: 'remove',
+    path: pathTo.imprint,
+  },
+];
