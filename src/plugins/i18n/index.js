@@ -5,7 +5,7 @@ Vue.use(VueI18n);
 
 /*
   How to use:
-  Add additional translation files to /local and translate the keys
+  Add additional translation files to /locales and translate the keys
   Add country key to /config/languages/index.js languages array
 */
 
@@ -25,5 +25,6 @@ function loadLocaleMessages () {
 export default new VueI18n({
   locale: process.env.VUE_APP_I18N_LOCALE || 'en',
   fallbackLocale: process.env.VUE_APP_I18N_FALLBACK_LOCALE || 'en',
+  silentFallbackWarn: true,
   messages: loadLocaleMessages(),
 });

@@ -1,5 +1,7 @@
 <template>
-  <div>Imprint</div>
+  <v-container>
+    <p>Imprint</p>
+  </v-container>
 </template>
 
 <script>

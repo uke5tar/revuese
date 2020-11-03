@@ -1,5 +1,7 @@
 <template>
-  <div>Dataprivacy</div>
+  <v-container>
+    <p>Dataprivacy</p>
+  </v-container>
 </template>
 
 <script>

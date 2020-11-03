@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <v-container>
     <p>Only visible for logged in users (authenticated).</p>
     <p>
       The app is by default not behind a login-wall.
@@ -8,7 +8,7 @@
       If the page should additionally appear within the menu they require the
       attribute 'auth: true' (see authenticated within navigationItems.js).
     </p>
-  </div>
+  </v-container>
 </template>
 
 <script>
