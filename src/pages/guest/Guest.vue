@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <v-container>
     <p>Only visible for users with role: 'guest' (default).</p>
     <p>
       Every user receives by default the role 'guest' after signup.
@@ -7,7 +7,7 @@
       to the page within navigationItems.js (see guest as an example). By default every user receives
       at signup the role 'guest'.
     </p>
-  </div>
+  </v-container>
 </template>
 
 <script>
