@@ -67,6 +67,7 @@ import snackbarMethods from '@/mixins/snackbar';
 import logout from '@/mixins/auth/logout';
 import loaderMethods from '@/mixins/loader';
 import updateDataFrom from '@/mixins/firestore/updateDataFrom';
+import addNamedCollection from '@/mixins/firestore/addNamedCollection';
 import { USERS } from '@/config/firestore';
 
 export default {
@@ -74,7 +75,7 @@ export default {
   components: {
     Modal,
   },
-  mixins: [logout, loaderMethods, updateDataFrom, snackbarMethods],
+  mixins: [logout, loaderMethods, updateDataFrom, addNamedCollection, snackbarMethods],
   data: () => ({
     localUserData: {
       displayName: '',
@@ -145,18 +146,20 @@ export default {
       this.showLoader();
 
       const user = this.userData;
-      const hasUserTable = await this.$firestore.collection('users').doc(user.uid).get()
+      const userTable = await this.$firestore.collection('users').doc(user.uid).get()
         .then((doc) => doc.exists)
         .catch((error) => {
           this.setSnackbarError({ text: error.message });
         });
 
-      if (hasUserTable) {
-        Object.keys(user).forEach((key) => {
-          const hasKeys = [this.localUserData, user].every((item) => Object.prototype.hasOwnProperty.call(item, key));
-          if (hasKeys) this.localUserData[key] = user[key];
-        });
+      if (!userTable) {
+        await this.addNamedCollection(USERS);
       }
+
+      Object.keys(user).forEach((key) => {
+        const hasKeys = [this.localUserData, user].every((item) => Object.prototype.hasOwnProperty.call(item, key));
+        if (hasKeys) this.localUserData[key] = user[key];
+      });
 
       this.hideLoader();
     },
